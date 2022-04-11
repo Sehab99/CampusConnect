@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_campus"
+        android:icon="@drawable/ic_campus"
+        android:title="Campus"/>
+
+    <item
+        android:id="@+id/nav_department"
+        android:icon="@drawable/ic_department"
+        android:title="Department"/>
+
+    <item
+        android:id="@+id/nav_hostel"
+        android:icon="@drawable/ic_hostel"
+        android:title="Hostel"/>
+
+    <item
+        android:id="@+id/nav_event"
+        android:icon="@drawable/ic_event"
+        android:title="Event"/>
+</menu>

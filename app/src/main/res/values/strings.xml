@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Campus Connect</string>
+
+    <string-array name="Department">
+        <item>Computer Science</item>
+        <item>Bio Informatics</item>
+        <item>Physics</item>
+        <item>English</item>
+        <item>Chemistry</item>
+        <item>History</item>
+        <item>Earth Science</item>
+    </string-array>
+
+    <string-array name="Hostel">
+        <item>Sri Aurobindo</item>
+        <item>Kannadas</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+    </string-array>
+
+    <string-array name="Fragments">
+        <item>Campus</item>
+        <item>Department</item>
+        <item>Hostel</item>
+    </string-array>
+</resources>
