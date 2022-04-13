@@ -25,6 +25,8 @@ public class AddPost extends AppCompatActivity {
     private EditText postLogEditText;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +47,14 @@ public class AddPost extends AppCompatActivity {
             public void onClick(View v) {
                 String writeContent = writeContentEditText.getText().toString();
 
-                if(writeContent == null) {
+                if(writeContent.isEmpty()) {
                     startActivity(new Intent(AddPost.this, MainActivity.class));
                     finish();
                 } else {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPost.this);
                     alertDialog.setTitle("Close post?");
                     alertDialog.setMessage("You have written something, by closing you will lose your post." +
-                            "/nAre you sure you want to close?");
+                            "\nAre you sure you want to close?");
                     alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -60,7 +62,7 @@ public class AddPost extends AppCompatActivity {
                             finish();
                         }
                     });
-                    alertDialog.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                    alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();

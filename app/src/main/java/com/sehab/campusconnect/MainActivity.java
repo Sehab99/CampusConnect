@@ -12,11 +12,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.sehab.campusconnect.Fragments.CampusFragment;
+import com.sehab.campusconnect.Fragments.DepartmentFragment;
+import com.sehab.campusconnect.Fragments.EventsFragment;
+import com.sehab.campusconnect.Fragments.HostelFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Campus");
 
-        addPost = findViewById(R.id.add_post);
         firebaseAuth = FirebaseAuth.getInstance();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -67,13 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace
                 (R.id.fragment_container, new CampusFragment()).commit();
-
-        addPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddPost.class));
-            }
-        });
 
     }
 
