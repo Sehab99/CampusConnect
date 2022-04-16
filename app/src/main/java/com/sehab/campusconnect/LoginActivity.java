@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -19,7 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
-
     private TextInputLayout textInputUsername;
     private TextInputLayout textInputLoginPassword;
     private Button buttonLogin;
@@ -34,24 +36,31 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().setTitle("Login to Continue");
 
-        textInputUsername = findViewById(R.id.textInputUsername);
-        textInputLoginPassword = findViewById(R.id.textInputLoginPassword);
-        buttonLogin = findViewById(R.id.buttonLogin);
-        buttonToSignUp = findViewById(R.id.buttonToSignUp);
+        textInputUsername = findViewById(R.id.text_input_username);
+        textInputLoginPassword = findViewById(R.id.text_input_login_password);
+        buttonLogin = findViewById(R.id.button_login);
+        buttonToSignUp = findViewById(R.id.button_to_sign_up);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         userRef = firebaseDatabase.getReference().child("Users");
+
+        final AutoCompleteTextView userTextView = findViewById(R.id.user_text_view);
+        ArrayAdapter<CharSequence> userAdapter = ArrayAdapter.createFromResource
+                (this, R.array.Users, android.R.layout.simple_spinner_item);
+        userAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        userTextView.setAdapter(userAdapter);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = textInputUsername.getEditText().getText().toString();
                 String password = textInputLoginPassword.getEditText().getText().toString();
+                String user = userTextView.getText().toString();
 
                 if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
                     Toast.makeText(LoginActivity.this, "Empty Credentials!", Toast.LENGTH_SHORT).show();
                 } else {
-                    loginUser(username,password);
+                    loginUser(username, password, user);
                 }
             }
         });
@@ -65,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void loginUser(String username, String password) {
+    private void loginUser(String username, String password, String user) {
         firebaseAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

@@ -23,17 +23,17 @@
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/textViewSignUp"
+                android:id="@+id/text_view_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
-                android:text="Sign Up"
+                android:text="Student Sign UP"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="40sp" />
+                android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputName"
+                android:id="@+id/text_input_name"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputEmail"
+                android:id="@+id/text_input_email"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputRegID"
+                android:id="@+id/text_input_regID"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,22 +71,37 @@
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Spinner
-                android:id="@+id/dropdownDepartment"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/department_spinner_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:spinnerMode="dropdown"
-                android:layout_marginBottom="5dp" />
-
-            <Spinner
-                android:id="@+id/dropdownHostel"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:spinnerMode="dropdown"
-                android:layout_marginBottom="5dp" />
+                android:layout_height="wrap_content"
+                android:hint="Department">
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/department_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    tools:ignore="KeyboardInaccessibleWidget" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputBatch"
+                android:id="@+id/hostel_spinner_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hostel">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/hostel_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    tools:ignore="KeyboardInaccessibleWidget"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_batch"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,7 +114,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputHomeAddress"
+                android:id="@+id/text_input_home_address"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,7 +127,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputPassword"
+                android:id="@+id/text_input_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,7 +142,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputConformPassword"
+                android:id="@+id/text_input_conform_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -142,7 +157,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/buttonSignUp"
+                android:id="@+id/button_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:layout_marginTop="10dp"
@@ -151,7 +166,7 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/buttonToLogin"
+                android:id="@+id/button_to_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -160,8 +175,5 @@
                 android:textColor="#000"
                 android:textSize="14sp" />
         </LinearLayout>
-
     </ScrollView>
-
-
 </RelativeLayout>

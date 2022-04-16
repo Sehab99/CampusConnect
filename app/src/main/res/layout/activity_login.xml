@@ -18,7 +18,7 @@
             android:padding="20dp">
 
             <ImageView
-                android:id="@+id/imageViewLoginLogo"
+                android:id="@+id/image_view_login_logo"
                 android:layout_width="200dp"
                 android:layout_height="270dp"
                 android:layout_gravity="center"
@@ -33,7 +33,22 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputUsername"
+                    android:id="@+id/user_spinner_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="User Type">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/user_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        tools:ignore="KeyboardInaccessibleWidget"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_username"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -45,7 +60,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLoginPassword"
+                    android:id="@+id/text_input_login_password"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -59,7 +74,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/buttonForgotPassword"
+                    android:id="@+id/button_forgot_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -70,7 +85,7 @@
                     android:textColor="#000" />
 
                 <Button
-                    android:id="@+id/buttonLogin"
+                    android:id="@+id/button_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -82,7 +97,7 @@
                     app:cornerRadius="20dp" />
 
                 <Button
-                    android:id="@+id/buttonToSignUp"
+                    android:id="@+id/button_to_sign_up"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -92,7 +107,6 @@
                     android:textColor="#000"
                     android:textSize="14dp" />
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

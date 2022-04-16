@@ -4,24 +4,55 @@
     <string-array name="Department">
         <item>Computer Science</item>
         <item>Bio Informatics</item>
+        <item>Bio Technology</item>
         <item>Physics</item>
         <item>English</item>
         <item>Chemistry</item>
         <item>History</item>
         <item>Earth Science</item>
+        <item>Management Studies</item>
+        <item>Mathematics</item>
+        <item>Statistics</item>
+        <item>Life Science</item>
+        <item>Humanities</item>
+        <item>Commerce</item>
+        <item>International Business</item>
+        <item>Banking Technology</item>
+        <item>Tourism Studies</item>
+        <item>Economics</item>
+        <item>French</item>
     </string-array>
 
     <string-array name="Hostel">
         <item>Sri Aurobindo</item>
-        <item>Kannadas</item>
-        <item>C</item>
-        <item>D</item>
-        <item>E</item>
+        <item>Kalidas</item>
+        <item>C.V. Raman</item>
+        <item>Kabirdas</item>
+        <item>Kamban</item>
+        <item>Tagore</item>
+        <item>SRK</item>
+        <item>Ilango Adigal</item>
+        <item>MAKA</item>
+        <item>Kannadasan</item>
+        <item>Madame Curie</item>
+        <item>Ganga</item>
+        <item>Kalpana Chawla</item>
+        <item>Cauvery</item>
+        <item>Yamuna</item>
+        <item>Saraswathy</item>
+        <item>Valmiki</item>
+        <item>Narmadha</item>
+        <item>Women Studies</item>
     </string-array>
 
     <string-array name="Fragments">
         <item>Campus</item>
         <item>Department</item>
         <item>Hostel</item>
+    </string-array>
+
+    <string-array name="Users">
+        <item>Student</item>
+        <item>Faculty</item>
     </string-array>
 </resources>

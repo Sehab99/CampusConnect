@@ -6,11 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,8 +27,6 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout textInputName;
     private TextInputLayout textInputEmail;
     private TextInputLayout textInputRegID;
-    private Spinner spinnerDepartment;
-    private Spinner spinnerHostel;
     private TextInputLayout textInputPassword;
     private TextInputLayout textInputConformPassword;
     private TextInputLayout textInputBatch;
@@ -47,33 +44,29 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         getSupportActionBar().setTitle("Sign UP");
 
-        textInputName = findViewById(R.id.textInputName);
-        textInputEmail = findViewById(R.id.textInputEmail);
-        textInputRegID = findViewById(R.id.textInputRegID);
-        textInputBatch = findViewById(R.id.textInputBatch);
-        textInputHomeAddress = findViewById(R.id.textInputHomeAddress);
-        textInputPassword = findViewById(R.id.textInputPassword);
-        textInputConformPassword = findViewById(R.id.textInputConformPassword);
-        buttonSignUp = findViewById(R.id.buttonSignUp);
-        buttonToLogin = findViewById(R.id.buttonToLogin);
+        textInputName = findViewById(R.id.text_input_name);
+        textInputEmail = findViewById(R.id.text_input_email);
+        textInputRegID = findViewById(R.id.text_input_regID);
+        textInputBatch = findViewById(R.id.text_input_batch);
+        textInputHomeAddress = findViewById(R.id.text_input_home_address);
+        textInputPassword = findViewById(R.id.text_input_password);
+        textInputConformPassword = findViewById(R.id.text_input_conform_password);
+        buttonSignUp = findViewById(R.id.button_sign_up);
+        buttonToLogin = findViewById(R.id.button_to_login);
 
-        spinnerDepartment = (Spinner) findViewById(R.id.dropdownDepartment);
+        final AutoCompleteTextView departmentTextView = findViewById(R.id.department_text_view);
         ArrayAdapter<CharSequence> departmentAdapter = ArrayAdapter.createFromResource
                 (this, R.array.Department, android.R.layout.simple_spinner_item);
-        departmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerDepartment.setAdapter(departmentAdapter);
-        spinnerDepartment.setPrompt("Department");
+        departmentTextView.setAdapter(departmentAdapter);
 
-        spinnerHostel = (Spinner) findViewById(R.id.dropdownHostel);
+        final AutoCompleteTextView hostelTextView = findViewById(R.id.hostel_text_view);
         ArrayAdapter<CharSequence> hostelAdapter = ArrayAdapter.createFromResource
                 (this, R.array.Hostel, android.R.layout.simple_spinner_item);
-        hostelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerHostel.setAdapter(hostelAdapter);
-        spinnerDepartment.setPrompt("Hostel");
+        hostelTextView.setAdapter(hostelAdapter);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("Users");
+        databaseReference = firebaseDatabase.getReference().child("Users").child("Student");
         userData = new HashMap<>();
 
 
@@ -83,8 +76,8 @@ public class SignUpActivity extends AppCompatActivity {
                 String fullName = textInputName.getEditText().getText().toString();
                 String email = textInputEmail.getEditText().getText().toString();
                 String regID = textInputRegID.getEditText().getText().toString();
-                String department = spinnerDepartment.getSelectedItem().toString();
-                String hostel = spinnerHostel.getSelectedItem().toString();
+                String department = departmentTextView.getText().toString();
+                String hostel = hostelTextView.getText().toString();
                 String batch = textInputBatch.getEditText().getText().toString();
                 String homeAddress = textInputHomeAddress.getEditText().getText().toString();
                 String password = textInputPassword.getEditText().getText().toString();
@@ -103,7 +96,7 @@ public class SignUpActivity extends AppCompatActivity {
                     userData.put("Full Name", fullName);
                     userData.put("Email", email);
                     userData.put("RegID", regID);
-                    userData.put("Dept", department);
+                    userData.put("Department", department);
                     userData.put("Hostel", hostel);
                     userData.put("Batch", batch);
                     userData.put("Home Address", homeAddress);
@@ -127,7 +120,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    String userID =task.getResult().getUser().getUid();
+                    String userID = task.getResult().getUser().getUid();
                     databaseReference.child(userID).updateChildren(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> t) {
@@ -136,7 +129,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                                 finish();
                             } else {
-                                Toast.makeText(SignUpActivity.this, "SignUp failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "Update Children Failed failed", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
