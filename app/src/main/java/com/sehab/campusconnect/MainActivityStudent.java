@@ -9,30 +9,36 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.sehab.campusconnect.Fragments.CampusFragment;
 import com.sehab.campusconnect.Fragments.DepartmentFragment;
 import com.sehab.campusconnect.Fragments.EventsFragment;
 import com.sehab.campusconnect.Fragments.HostelFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityStudent extends AppCompatActivity {
 
     FloatingActionButton addPost;
+    String uid;
     FirebaseAuth firebaseAuth;
+    DatabaseReference mBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_student);
         getSupportActionBar().setTitle("Campus");
 
         firebaseAuth = FirebaseAuth.getInstance();
+        uid =firebaseAuth.getUid().toString();
+        mBase = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+        mBase.keepSynced(true);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -83,11 +89,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.profile:
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                startActivity(new Intent(MainActivityStudent.this, ProfileActivity.class));
                 break;
 
             case R.id.aboutUs:
-                startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
+                startActivity(new Intent(MainActivityStudent.this, AboutUsActivity.class));
                 break;
 
             case R.id.talkMode:
@@ -95,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.logOut:
                 FirebaseAuth.getInstance().signOut();
-                Toast.makeText(MainActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                Toast.makeText(MainActivityStudent.this, "Logged Out", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivityStudent.this, LoginActivity.class));
                 finish();
                 break;
         }

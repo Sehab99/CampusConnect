@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -48,7 +47,7 @@ public class AddPost extends AppCompatActivity {
                 String writeContent = writeContentEditText.getText().toString();
 
                 if(writeContent.isEmpty()) {
-                    startActivity(new Intent(AddPost.this, MainActivity.class));
+                    startActivity(new Intent(AddPost.this, MainActivityStudent.class));
                     finish();
                 } else {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPost.this);
@@ -58,7 +57,7 @@ public class AddPost extends AppCompatActivity {
                     alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(AddPost.this, MainActivity.class));
+                            startActivity(new Intent(AddPost.this, MainActivityStudent.class));
                             finish();
                         }
                     });

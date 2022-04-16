@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sehab.campusconnect.AddPost;
-import com.sehab.campusconnect.MainActivity;
 import com.sehab.campusconnect.R;
 
 public class CampusFragment extends Fragment {

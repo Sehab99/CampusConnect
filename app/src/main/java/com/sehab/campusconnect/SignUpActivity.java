@@ -66,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("Users").child("Student");
+        databaseReference = firebaseDatabase.getReference().child("Users");
         userData = new HashMap<>();
 
 
@@ -82,6 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String homeAddress = textInputHomeAddress.getEditText().getText().toString();
                 String password = textInputPassword.getEditText().getText().toString();
                 String conformPassword = textInputConformPassword.getEditText().getText().toString();
+                String type = "Student";
 
                 if(TextUtils.isEmpty(fullName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(regID)
                         || TextUtils.isEmpty(department) || TextUtils.isEmpty(hostel) ||
@@ -100,6 +101,7 @@ public class SignUpActivity extends AppCompatActivity {
                     userData.put("Hostel", hostel);
                     userData.put("Batch", batch);
                     userData.put("Home Address", homeAddress);
+                    userData.put("Type", type);
                     signUpUser(email, password);
                 }
             }
@@ -129,7 +131,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                                 finish();
                             } else {
-                                Toast.makeText(SignUpActivity.this, "Update Children Failed failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "SignUp failed", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
