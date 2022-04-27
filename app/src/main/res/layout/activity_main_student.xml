@@ -19,7 +19,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:visibility="gone"
-            android:text="No Classroom Created or Joined"
+            android:text="No post yet"
             android:textSize="20dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -27,18 +27,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:id="@+id/add_post"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="bottom|end"-->
-<!--            android:layout_marginRight="30dp"-->
-<!--            android:layout_marginBottom="30dp"-->
-<!--            android:backgroundTint="@color/theme"-->
-<!--            android:clickable="true"-->
-<!--            app:srcCompat="@drawable/ic_post"-->
-<!--            app:borderWidth="0dp"-->
-<!--            app:elevation="10dp"/>-->
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

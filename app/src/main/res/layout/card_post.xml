@@ -34,11 +34,10 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/dept_name"
+                android:id="@+id/profile_dept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Department Name"
-
                 android:textSize="15sp" />
         </LinearLayout>
     </RelativeLayout>
@@ -52,10 +51,40 @@
         android:paddingBottom="5dp"
         android:text="This is some random text about the post and jhvdhv hd cjhdb  dchxdbcj  hdbcdh chcdc cjsdhc kjdfv ksdj kjd  kdsj jskdv xdjv jxcx." />
 
+    <LinearLayout
+        android:id="@+id/date_and_time_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="25dp"
+        android:layout_below="@+id/post_content"
+        >
         <TextView
-            android:id="@+id/post_date"
+            android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5.16 am . 13 Apr 22"
-            android:layout_alignEnd="@+id/post_content"/>
+            android:text="5:16 am"
+            />
+        <TextView
+            android:layout_marginHorizontal="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inter_punct"
+
+            />
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="22 Apr 22"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_post"
+        android:layout_below="@id/date_and_time_layout"
+        android:backgroundTint="@color/grey_post" />
 </RelativeLayout>

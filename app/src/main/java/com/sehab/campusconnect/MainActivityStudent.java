@@ -24,7 +24,7 @@ import com.sehab.campusconnect.Fragments.HostelFragment;
 
 public class MainActivityStudent extends AppCompatActivity {
 
-    FloatingActionButton addPost;
+    BottomNavigationView bottomNavigationView;
     String uid;
     FirebaseAuth firebaseAuth;
     DatabaseReference mBase;
@@ -40,7 +40,7 @@ public class MainActivityStudent extends AppCompatActivity {
         mBase = FirebaseDatabase.getInstance().getReference("Users").child(uid);
         mBase.keepSynced(true);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
