@@ -74,23 +74,21 @@ public class CampusFragment extends Fragment {
                 for(DataSnapshot feedSnap : snapshot.getChildren()) {
                     String postKey = feedSnap.getKey();
 
-
-                            String post = feedSnap.child("post").getValue().toString();
-                            String posterName =  feedSnap.child("posterName").getValue().toString();
-                            String posterDept = feedSnap.child("posterDept").getValue().toString();
-                            String date = feedSnap.child("date").getValue().toString();
-                            String time = feedSnap.child("time").getValue().toString();
-                            //To change the UID
-                            String posterUID="id";
-                            campusFeed.add(new Campus(post, postKey, posterUID, posterName, posterDept, date,time));
-                            int count=0;
-                            count++;
+                    String post = feedSnap.child("post").getValue().toString();
+                    String posterName =  feedSnap.child("posterName").getValue().toString();
+                    String posterDept = feedSnap.child("posterDept").getValue().toString();
+                    String date = feedSnap.child("date").getValue().toString();
+                    String time = feedSnap.child("time").getValue().toString();
+                    String posterUID= feedSnap.child("posterUID").getValue().toString();
+                    campusFeed.add(new Campus(post, posterUID, posterName, posterDept, date,time));
+                    int count=0;
+                    count++;
 
                 }
                 campusAdapter = new CampusAdapter(getContext(),campusFeed);
                 contentRecyclerCampus.setAdapter(campusAdapter);
 
-                Log.i("Populated List",campusFeed.toString());
+                //Log.i("Populated List",campusFeed.toString());
             }
 
             @Override
@@ -102,7 +100,6 @@ public class CampusFragment extends Fragment {
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(getContext(), AddPost.class));
             }
         });

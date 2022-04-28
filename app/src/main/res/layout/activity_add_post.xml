@@ -55,13 +55,15 @@
                 android:layout_marginRight="10dp"
                 android:src="@drawable/ic_profile" />
 
-            <Spinner
-                android:id="@+id/spinner_post_scope"
+            <TextView
+                android:id="@+id/post_scope"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:layout_marginRight="10dp"
-                android:spinnerMode="dropdown" />
+                android:hint="Campus"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
         </LinearLayout>
 
         <EditText

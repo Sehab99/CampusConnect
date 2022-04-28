@@ -2,7 +2,6 @@ package com.sehab.campusconnect.models;
 
 public class Campus {
     private String post;
-    private String postKey;
     private String posterUID;
     private String posterName;
     private String posterDept;
@@ -10,9 +9,8 @@ public class Campus {
     private String time;
 
 
-    public Campus(String post, String postKey, String posterUID, String posterName, String posterDept, String date, String time) {
+    public Campus(String post, String posterUID, String posterName, String posterDept, String date, String time) {
         this.post = post;
-        this.postKey = postKey;
         this.posterUID = posterUID;
         this.posterName = posterName;
         this.posterDept = posterDept;
@@ -26,14 +24,6 @@ public class Campus {
 
     public void setPost(String post) {
         this.post = post;
-    }
-
-    public String getPostKey() {
-        return postKey;
-    }
-
-    public void setPostKey(String postKey) {
-        this.postKey = postKey;
     }
 
     public String getPosterUID() {
@@ -80,7 +70,6 @@ public class Campus {
     public String toString() {
         return "Campus{" +
                 "post='" + post + '\'' +
-                ", postKey='" + postKey + '\'' +
                 ", posterUID='" + posterUID + '\'' +
                 ", posterName='" + posterName + '\'' +
                 ", posterDept='" + posterDept + '\'' +

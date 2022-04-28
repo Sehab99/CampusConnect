@@ -52,7 +52,8 @@ public class CampusAdapter extends RecyclerView.Adapter<CampusAdapter.CampusView
         TextView profileName;
         TextView post;
         TextView deptName;
-        TextView date,time;
+        TextView date;
+        TextView time;
 
         public CampusViewHolder(@NonNull View itemView) {
             super(itemView);
