@@ -1,9 +1,5 @@
 package com.sehab.campusconnect;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,13 +25,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sehab.campusconnect.Fragments.CampusFragment;
+import com.sehab.campusconnect.Fragments.HostelFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class AddPost extends AppCompatActivity {
+public class AddPostHostelActivity extends AppCompatActivity {
     String post;
+    String hostelName;
     private ImageButton closeImageButton;
     private Button postContentButton;
     private ImageView profilePic;
@@ -42,13 +45,13 @@ public class AddPost extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     DatabaseReference mBase;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_post);
+        setContentView(R.layout.activity_add_post_hostel);
         getSupportActionBar().hide();
 
+        hostelName = "";
         postContentButton = findViewById(R.id.post_content);
         postScopeTextView = findViewById(R.id.post_scope);
         postLogTextView = findViewById(R.id.post_log);
@@ -57,32 +60,28 @@ public class AddPost extends AppCompatActivity {
         newPost = new HashMap<>();
         firebaseAuth =FirebaseAuth.getInstance();
         mBase = FirebaseDatabase.getInstance().getReference();
+        //mBase.keepSynced(true);
 
-        postScopeTextView.setText("Campus");
-        postLogTextView.setText("Everyone can post here");
+        postScopeTextView.setText("Hostel");
+        postLogTextView.setText(hostelName + "hostler can post here");
         postContentButton.setEnabled(false);
 
         writeContentEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().isEmpty())
                     postContentButton.setEnabled(false);
                 else
-                    if (!postContentButton.isEnabled())
-                        postContentButton.setEnabled(true);
+                if (!postContentButton.isEnabled())
+                    postContentButton.setEnabled(true);
             }
-
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
-
 
         postContentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,9 +94,10 @@ public class AddPost extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String posterName = snapshot.child("Full Name").getValue().toString();
                         String posterDept = snapshot.child("Department").getValue().toString();
+                        String hostelName = snapshot.child("Hostel").getValue().toString();
 
                         if(post.isEmpty()) {
-                            Toast.makeText(AddPost.this, "Post is Empty!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddPostHostelActivity.this, "Post is Empty!", Toast.LENGTH_SHORT).show();
                         } else {
                             Calendar calendar = Calendar.getInstance();
                             SimpleDateFormat sdfDate =new SimpleDateFormat("dd MMM yy");
@@ -111,13 +111,11 @@ public class AddPost extends AppCompatActivity {
                             newPost.put("time", time);
                             newPost.put("posterUID", posterUID);
 
-                            addPost();
+                            addPost(hostelName);
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
             }
@@ -128,17 +126,17 @@ public class AddPost extends AppCompatActivity {
             public void onClick(View v) {
                 post = writeContentEditText.getText().toString();
                 if(post.isEmpty()) {
-                    startActivity(new Intent(AddPost.this, MainActivityStudent.class));
+                    startActivity(new Intent(AddPostHostelActivity.this, MainActivityStudent.class));
                     finish();
                 } else {
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPost.this);
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPostHostelActivity.this);
                     alertDialog.setTitle("Close post?");
                     alertDialog.setMessage("You have written something, by closing you will lose your post." +
                             "\nAre you sure you want to close?");
                     alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(AddPost.this, MainActivityStudent.class));
+                            startActivity(new Intent(AddPostHostelActivity.this, MainActivityStudent.class));
                             finish();
                         }
                     });
@@ -150,43 +148,23 @@ public class AddPost extends AppCompatActivity {
                     });
                     alertDialog.show();
                 }
-
             }
         });
     }
 
-    private void addPost() {
-//        DatabaseReference postRef =mBase.push();
-//        String postID = postRef.getKey();
-//        mBase.child("Post").child("Campus").child(postID).updateChildren(newPost)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                if(task.isSuccessful()) {
-//                    Toast.makeText(AddPost.this, "Posted", Toast.LENGTH_SHORT).show();
-//                    startActivity(new Intent(AddPost.this, MainActivityStudent.class));
-//                } else {
-//                    Toast.makeText(AddPost.this, "Failed", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-        mBase.child("Post").child("Campus").push().updateChildren(newPost)
+    private void addPost(String hostelName) {
+        mBase.child("Post").child("Hostel").child(hostelName).push().updateChildren(newPost)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()) {
-                    Toast.makeText(AddPost.this, "Posted", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(AddPost.this, "Failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            startActivity(new Intent(AddPostHostelActivity.this, MainActivityStudent.class));
+                            finish();
+                            Toast.makeText(AddPostHostelActivity.this, "Posted", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(AddPostHostelActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
-
-//    private void activatePostButton() {
-//        writeContent = writeContentEditText.getText().toString();
-//        while (!TextUtils.isEmpty(writeContent)) {
-//            postContentButton.setEnabled(true);
-//        }
-//    }
 }

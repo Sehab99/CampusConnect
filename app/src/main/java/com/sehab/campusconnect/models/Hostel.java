@@ -2,15 +2,17 @@ package com.sehab.campusconnect.models;
 
 public class Hostel {
     private String post;
-    private String postKey;
+    private String posterUID;
     private String posterName;
+    private String posterDept;
     private String date;
     private String time;
 
-    public Hostel(String post, String postKey, String posterName, String date, String time) {
+    public Hostel(String post, String posterUID, String posterName, String posterDept, String date, String time) {
         this.post = post;
-        this.postKey = postKey;
+        this.posterUID = posterUID;
         this.posterName = posterName;
+        this.posterDept = posterDept;
         this.date = date;
         this.time = time;
     }
@@ -23,12 +25,12 @@ public class Hostel {
         this.post = post;
     }
 
-    public String getPostKey() {
-        return postKey;
+    public String getPosterUID() {
+        return posterUID;
     }
 
-    public void setPostKey(String postKey) {
-        this.postKey = postKey;
+    public void setPosterUID(String posterUID) {
+        this.posterUID = posterUID;
     }
 
     public String getPosterName() {
@@ -37,6 +39,14 @@ public class Hostel {
 
     public void setPosterName(String posterName) {
         this.posterName = posterName;
+    }
+
+    public String getPosterDept() {
+        return posterDept;
+    }
+
+    public void setPosterDept(String posterDept) {
+        this.posterDept = posterDept;
     }
 
     public String getDate() {

@@ -3,7 +3,6 @@ package com.sehab.campusconnect.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.sehab.campusconnect.AddPost;
+import com.sehab.campusconnect.AddPostCampusActivity;
 import com.sehab.campusconnect.R;
 import com.sehab.campusconnect.adapters.CampusAdapter;
 import com.sehab.campusconnect.models.Campus;
@@ -43,7 +42,6 @@ public class CampusFragment extends Fragment {
     RecyclerView contentRecyclerCampus;
 
     public CampusFragment() {
-
     }
 
     @Nullable
@@ -72,7 +70,7 @@ public class CampusFragment extends Fragment {
                 }
 
                 for(DataSnapshot feedSnap : snapshot.getChildren()) {
-                    String postKey = feedSnap.getKey();
+                    //String postKey = feedSnap.getKey();
 
                     String post = feedSnap.child("post").getValue().toString();
                     String posterName =  feedSnap.child("posterName").getValue().toString();
@@ -100,10 +98,9 @@ public class CampusFragment extends Fragment {
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), AddPost.class));
+                startActivity(new Intent(getContext(), AddPostCampusActivity.class));
             }
         });
         return view;
-
     }
 }

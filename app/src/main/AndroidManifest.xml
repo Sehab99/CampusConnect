@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusConnect">
         <activity
+            android:name=".AddPostHostelActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivityFaculty"
             android:exported="false" />
         <activity
-            android:name=".AddPost"
+            android:name=".AddPostCampusActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"

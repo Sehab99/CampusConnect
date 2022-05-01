@@ -2,7 +2,7 @@
     <string name="app_name">Campus Connect</string>
 
     <string name="inter_punct">\u2022</string>
-<!--    <string name="date_and_time">5:16 am \u2022 13 Apr 22</string>-->
+    <!--    <string name="date_and_time">5:16 am \u2022 13 Apr 22</string>-->
 
     <string-array name="Department">
         <item>Computer Science</item>
