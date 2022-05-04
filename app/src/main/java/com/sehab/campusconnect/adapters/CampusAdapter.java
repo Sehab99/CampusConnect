@@ -16,7 +16,6 @@ import com.sehab.campusconnect.models.Campus;
 import java.util.ArrayList;
 
 public class CampusAdapter extends RecyclerView.Adapter<CampusAdapter.CampusViewHolder> {
-
     Context context;
     ArrayList<Campus> campusArrayList;
 

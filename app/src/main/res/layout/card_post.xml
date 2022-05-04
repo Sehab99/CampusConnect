@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:background="@drawable/post_background">
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="2dp"
+    android:background="@drawable/background_post">
 
     <RelativeLayout
         android:id="@+id/profile_layout"
@@ -58,14 +59,14 @@
         android:orientation="horizontal"
         android:paddingVertical="5dp"
         android:paddingHorizontal="25dp"
-        android:layout_below="@+id/post_content"
-        >
+        android:layout_below="@+id/post_content">
+
         <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5:16 am"
-            />
+            android:text="5:16 am" />
+
         <TextView
             android:layout_marginHorizontal="4dp"
             android:layout_width="wrap_content"
@@ -73,14 +74,15 @@
             android:text="@string/inter_punct"
 
             />
+
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="22 Apr 22"
-            />
+            android:text="22 Apr 22" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

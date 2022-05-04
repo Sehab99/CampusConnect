@@ -33,7 +33,7 @@ public class HostelFragment extends Fragment {
     TextView emptyFeed;
 
     FirebaseAuth firebaseAuth;
-    DatabaseReference mBase;
+    DatabaseReference mBase, userRef;
 
     HostelAdapter hostelAdapter;
     ArrayList<Hostel> hostelFeed;
@@ -51,13 +51,36 @@ public class HostelFragment extends Fragment {
         emptyFeed = view.findViewById(R.id.empty_feed);
         contentRecyclerHostel = view.findViewById(R.id.content_recycler_hostel);
         firebaseAuth = FirebaseAuth.getInstance();
-        mBase = FirebaseDatabase.getInstance().getReference("Post").child("Hostel");
+        mBase = userRef =  FirebaseDatabase.getInstance().getReference();
         mBase.keepSynced(true);
         contentRecyclerHostel.setHasFixedSize(true);
         contentRecyclerHostel.setLayoutManager(new LinearLayoutManager(getContext()));
         contentRecyclerHostel.setItemAnimator(new DefaultItemAnimator());
 
-        mBase.addListenerForSingleValueEvent(new ValueEventListener() {
+        userRef.child("Users").child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String hostel = snapshot.child("Hostel").getValue().toString();
+                showPost(hostel);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        addPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), AddPostHostelActivity.class));
+            }
+        });
+        return view;
+    }
+
+    private void showPost(String hostel) {
+        mBase.child("Post").child("Hostel").child(hostel).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 hostelFeed = new ArrayList<>();
@@ -68,8 +91,6 @@ public class HostelFragment extends Fragment {
                 }
 
                 for(DataSnapshot feedSnap : snapshot.getChildren()) {
-                    //String postKey = feedSnap.getKey();
-
                     String post = feedSnap.child("post").getValue().toString();
                     String posterName =  feedSnap.child("posterName").getValue().toString();
                     String posterDept = feedSnap.child("posterDept").getValue().toString();
@@ -91,13 +112,5 @@ public class HostelFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
-        addPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), AddPostHostelActivity.class));
-            }
-        });
-        return view;
     }
 }
