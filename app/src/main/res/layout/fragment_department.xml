@@ -13,19 +13,20 @@
         <RelativeLayout
             android:id="@+id/department_main"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="200dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="2dp"
-            android:background="@drawable/background_card_department_main">
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/ic_department_background">
 
             <TextView
                 android:id="@+id/department_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:textColor="@color/black"
+                android:layout_marginTop="30dp"
                 android:text="Department Name"
-                android:textSize="30sp" />
+                android:textSize="22sp" />
 
         </RelativeLayout>
 

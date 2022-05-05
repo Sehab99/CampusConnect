@@ -1,18 +1,24 @@
 package com.sehab.campusconnect.Fragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,6 +54,7 @@ public class DepartmentFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String DEPARTMENT = snapshot.child("Department").getValue().toString();
                 departmentName.setText(DEPARTMENT);
+                departmentName.setPaintFlags(departmentName.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             }
 
             @Override
@@ -67,9 +74,33 @@ public class DepartmentFragment extends Fragment {
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), AddPostCampusActivity.class));
+                addNewGroup();
             }
         });
+
         return view;
+    }
+
+    private void addNewGroup() {
+        AlertDialog.Builder builder =  new AlertDialog.Builder(getContext());
+        builder.setTitle("Join new group");
+        final View LAYOUT = getLayoutInflater().inflate(R.layout.custom_layout_alert_dialog,null);
+        builder.setView(LAYOUT);
+        builder.setPositiveButton("Join", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                TextInputLayout joiningLinkTextInput = LAYOUT.findViewById(R.id.text_input_m);
+                String joiningLink = joiningLinkTextInput.getEditText().getText().toString();
+                Toast.makeText(getContext(), joiningLink, Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        //AlertDialog alertDialog = builder.create();
+        builder.show();
     }
 }

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="2dp"
-    android:background="@drawable/background_card_department_main">
+    android:background="@drawable/ic_department_background">
 
-    <TextView
-        android:id="@+id/department_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Department Name"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        <TextView
+            android:id="@+id/department_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Department Name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="22dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
 
 </RelativeLayout>
