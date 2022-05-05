@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout textInputLoginPassword;
     private Button buttonLogin;
     private Button buttonToSignUp;
+    private Button buttonForgotPassword;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference userRef;
@@ -42,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         textInputLoginPassword = findViewById(R.id.text_input_login_password);
         buttonLogin = findViewById(R.id.button_login);
         buttonToSignUp = findViewById(R.id.button_to_sign_up);
+        buttonForgotPassword = findViewById(R.id.button_forgot_password);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         userRef = firebaseDatabase.getReference().child("Users");
@@ -72,6 +74,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
                 finish();
+            }
+        });
+
+        buttonForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
