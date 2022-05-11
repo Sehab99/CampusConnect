@@ -110,7 +110,6 @@ public class AddPostCampusActivity extends AppCompatActivity {
                             addPost();
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 

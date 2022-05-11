@@ -58,4 +58,7 @@
         <item>Student</item>
         <item>Faculty</item>
     </string-array>
+
+    <string name="event_date">00 MMM 0000</string>
+    <string name="event_time">00:00 am</string>
 </resources>

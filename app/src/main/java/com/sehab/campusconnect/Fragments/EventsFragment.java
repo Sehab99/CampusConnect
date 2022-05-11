@@ -28,7 +28,6 @@ public class EventsFragment extends Fragment {
                 startActivity(new Intent(getContext(), AddEventActivity.class));
             }
         });
-
         return view;
     }
 }

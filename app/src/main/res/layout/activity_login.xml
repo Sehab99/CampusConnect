@@ -87,14 +87,12 @@
                 <Button
                     android:id="@+id/button_login"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_height="60dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@color/theme"
+
                     android:text="Login"
-                    android:textColor="@color/white"
                     android:textSize="18dp"
-                    app:cornerRadius="20dp" />
+                    app:cornerRadius="10dp" />
 
                 <Button
                     android:id="@+id/button_to_sign_up"

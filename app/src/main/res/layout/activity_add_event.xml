@@ -4,14 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="15dp"
+    android:gravity="center"
     tools:context=".AddEventActivity">
 
-    <Button
-        android:id="@+id/button_date_picker"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_event_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date Picker"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:hint="Event Name"
+        android:layout_marginVertical="5dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <LinearLayout
+        android:id="@+id/linear_layout_date"
+        android:layout_below="@+id/text_input_event_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="5dp">
+        <Button
+            android:id="@+id/button_date_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Date" />
+        <TextView
+            android:id="@+id/text_view_event_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/event_date"
+            android:gravity="end"
+            android:textSize="22sp"
+            android:paddingHorizontal="10dp"
+            android:layout_marginVertical="3dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_layout_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="5dp"
+        android:layout_below="@+id/linear_layout_date">
+        <Button
+            android:id="@+id/button_time_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Time"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:id="@+id/text_view_event_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/event_time"
+            android:gravity="end"
+            android:textSize="22sp"
+            android:paddingHorizontal="10dp"
+            android:layout_marginVertical="3dp"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/text_view_event_desc"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/linear_layout_time"
+        android:hint="Event Desc"
+        android:padding="10dp"
+        android:gravity="start"
+        android:background="@null"/>
+    <Button
+        android:id="@+id/button_add_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_below="@+id/text_view_event_desc"
+        android:text="Add Event"/>
 </RelativeLayout>

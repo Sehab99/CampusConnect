@@ -163,7 +163,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:text="Sign UP"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                />
 
             <Button
                 android:id="@+id/button_to_login"

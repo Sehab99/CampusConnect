@@ -25,6 +25,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
+        getSupportActionBar().setTitle("Forgot Password");
 
         textInputEmail = findViewById(R.id.text_input_email);
         back = findViewById(R.id.button_back);
@@ -44,6 +45,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()) {
                                 Toast.makeText(ForgotPasswordActivity.this, "Check your mail", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
+                                finish();
                             } else {
                                 Toast.makeText(ForgotPasswordActivity.this, "Failed to send reset email", Toast.LENGTH_SHORT).show();
                             }
