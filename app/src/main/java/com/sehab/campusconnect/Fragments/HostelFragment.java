@@ -80,7 +80,7 @@ public class HostelFragment extends Fragment {
     }
 
     private void showPost(String hostel) {
-        mBase.child("Post").child("Hostel").child(hostel).addListenerForSingleValueEvent(new ValueEventListener() {
+        mBase.child("Post").child("Hostel").child(hostel).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 hostelFeed = new ArrayList<>();

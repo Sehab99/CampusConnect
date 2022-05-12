@@ -4,12 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/background_card_department_main.xml" value="0.1295" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/background_card_event.xml" value="0.1715" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/background_card_post.xml" value="0.1715" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/background_post.xml" value="0.1295" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/backgroung_card_department_main.xml" value="0.1295" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_close.xml" value="0.1295" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_department.xml" value="0.1245" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_department_background.xml" value="0.1295" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_event.xml" value="0.1295" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_post.xml" value="0.1715" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/post_background.xml" value="0.165234375" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/post_button.xml" value="0.143" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_add_event.xml" value="0.153125" />
@@ -24,11 +27,12 @@
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_splash.xml" value="0.13" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/card_department.xml" value="0.16" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/card_department_main.xml" value="0.153125" />
-        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/card_event.xml" value="0.15234375" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/card_event.xml" value="0.22" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/card_post.xml" value="0.18" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/custom_layout_alert_dialog.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/fragment_campus.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/fragment_department.xml" value="0.18" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/fragment_events.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/fragment_hostel.xml" value="0.153125" />
       </map>
     </option>

@@ -158,7 +158,7 @@ public class AddPostHostelActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()) {
-                            startActivity(new Intent(AddPostHostelActivity.this, MainActivityStudent.class));
+//                            startActivity(new Intent(AddPostHostelActivity.this, MainActivityStudent.class));
                             finish();
                             Toast.makeText(AddPostHostelActivity.this, "Posted", Toast.LENGTH_SHORT).show();
                         } else {

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusConnect">
         <activity
+            android:name=".AddPostDepartmentActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddEventActivity"
             android:exported="false" />
         <activity
@@ -35,12 +38,10 @@
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false"
-            />
-<!--        android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"-->
+            android:exported="false" /> <!-- android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar" -->
         <activity
             android:name=".MainActivityStudent"
             android:exported="false" />

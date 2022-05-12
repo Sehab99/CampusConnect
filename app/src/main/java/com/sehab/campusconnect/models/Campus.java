@@ -8,7 +8,6 @@ public class Campus {
     private String date;
     private String time;
 
-
     public Campus(String post, String posterUID, String posterName, String posterDept, String date, String time) {
         this.post = post;
         this.posterUID = posterUID;

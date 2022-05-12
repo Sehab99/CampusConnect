@@ -3,6 +3,7 @@ package com.sehab.campusconnect.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ import com.sehab.campusconnect.adapters.CampusAdapter;
 import com.sehab.campusconnect.models.Campus;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CampusFragment extends Fragment {
     FloatingActionButton addPost;
@@ -79,10 +81,8 @@ public class CampusFragment extends Fragment {
                     String time = feedSnap.child("time").getValue().toString();
                     String posterUID= feedSnap.child("posterUID").getValue().toString();
                     campusFeed.add(new Campus(post, posterUID, posterName, posterDept, date,time));
-                    int count=0;
-                    count++;
-
                 }
+                Collections.reverse(campusFeed);
                 campusAdapter = new CampusAdapter(getContext(),campusFeed);
                 contentRecyclerCampus.setAdapter(campusAdapter);
 

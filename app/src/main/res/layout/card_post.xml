@@ -2,9 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="2dp"
-    android:background="@drawable/background_post">
+    android:layout_marginVertical="3dp"
+    android:layout_marginHorizontal="4dp"
+    android:paddingTop="2dp"
+    android:background="@drawable/background_card_post"
+    android:elevation="6dp">
 
     <RelativeLayout
         android:id="@+id/profile_layout"
@@ -49,8 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/profile_layout"
         android:paddingHorizontal="25dp"
-        android:paddingBottom="5dp"
-        android:text="This is some random text about the post and jhvdhv hd cjhdb  dchxdbcj  hdbcdh chcdc cjsdhc kjdfv ksdj kjd  kdsj jskdv xdjv jxcx." />
+        android:text="This is some random text about the post..."
+        android:textSize="16sp"/>
 
     <LinearLayout
         android:id="@+id/date_and_time_layout"
@@ -71,22 +73,19 @@
             android:layout_marginHorizontal="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/inter_punct"
-
-            />
+            android:text="@string/inter_punct" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="22 Apr 22" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/grey_post"
-        android:layout_below="@id/date_and_time_layout"
-        android:backgroundTint="@color/grey_post" />
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="@color/grey_post"-->
+<!--        android:layout_below="@id/date_and_time_layout"-->
+<!--        android:backgroundTint="@color/grey_post" />-->
 </RelativeLayout>
