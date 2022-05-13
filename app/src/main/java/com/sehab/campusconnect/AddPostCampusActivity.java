@@ -25,14 +25,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.sehab.campusconnect.Fragments.CampusFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
 public class AddPostCampusActivity extends AppCompatActivity {
-    String post;
     private ImageButton closeImageButton;
     private Button postContentButton;
     private ImageView profilePic;
@@ -42,12 +40,12 @@ public class AddPostCampusActivity extends AppCompatActivity {
     HashMap<String, Object> newPost;
     FirebaseAuth firebaseAuth;
     DatabaseReference mBase;
-
+    String post;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_post);
+        setContentView(R.layout.activity_add_post_campus);
         getSupportActionBar().hide();
 
         postContentButton = findViewById(R.id.post_content);

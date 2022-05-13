@@ -36,6 +36,7 @@ public class DepartmentFragment extends Fragment {
     DatabaseReference mBase;
     RelativeLayout departmentMain;
     TextView departmentName;
+    String DEPARTMENT;
 
     @Nullable
     @Override
@@ -52,7 +53,7 @@ public class DepartmentFragment extends Fragment {
         mBase.child("Users").child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String DEPARTMENT = snapshot.child("Department").getValue().toString();
+                DEPARTMENT = snapshot.child("Department").getValue().toString();
                 departmentName.setText(DEPARTMENT);
                 departmentName.setPaintFlags(departmentName.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             }
@@ -66,7 +67,8 @@ public class DepartmentFragment extends Fragment {
         departmentMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), DepartmentMainFeedActivity.class));
+                startActivity(new Intent(getContext(), DepartmentMainFeedActivity.class)
+                        .putExtra("Department Name", DEPARTMENT));
             }
         });
 

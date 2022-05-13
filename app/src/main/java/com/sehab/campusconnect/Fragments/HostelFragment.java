@@ -98,8 +98,8 @@ public class HostelFragment extends Fragment {
                     String time = feedSnap.child("time").getValue().toString();
                     String posterUID= feedSnap.child("posterUID").getValue().toString();
                     hostelFeed.add(new Hostel(post, posterUID, posterName, posterDept, date,time));
-                    int count=0;
-                    count++;
+//                    int count=0;
+//                    count++;
 
                 }
                 hostelAdapter = new HostelAdapter(getContext(), hostelFeed);

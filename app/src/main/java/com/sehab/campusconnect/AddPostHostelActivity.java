@@ -51,7 +51,7 @@ public class AddPostHostelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_post_hostel);
         getSupportActionBar().hide();
 
-        hostelName = "";
+        hostelName = ""; //yet to complete
         postContentButton = findViewById(R.id.post_content);
         postScopeTextView = findViewById(R.id.post_scope);
         postLogTextView = findViewById(R.id.post_log);
@@ -60,7 +60,6 @@ public class AddPostHostelActivity extends AppCompatActivity {
         newPost = new HashMap<>();
         firebaseAuth =FirebaseAuth.getInstance();
         mBase = FirebaseDatabase.getInstance().getReference();
-        //mBase.keepSynced(true);
 
         postScopeTextView.setText("Hostel");
         postLogTextView.setText(hostelName + "hostler can post here");
@@ -94,7 +93,7 @@ public class AddPostHostelActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String posterName = snapshot.child("Full Name").getValue().toString();
                         String posterDept = snapshot.child("Department").getValue().toString();
-                        String hostelName = snapshot.child("Hostel").getValue().toString();
+                        String posterHostel = snapshot.child("Hostel").getValue().toString();
 
                         if(post.isEmpty()) {
                             Toast.makeText(AddPostHostelActivity.this, "Post is Empty!", Toast.LENGTH_SHORT).show();
@@ -111,7 +110,7 @@ public class AddPostHostelActivity extends AppCompatActivity {
                             newPost.put("time", time);
                             newPost.put("posterUID", posterUID);
 
-                            addPost(hostelName);
+                            addPost(posterHostel);
                         }
                     }
                     @Override
