@@ -23,7 +23,6 @@ import com.sehab.campusconnect.Fragments.EventsFragment;
 import com.sehab.campusconnect.Fragments.HostelFragment;
 
 public class MainActivityStudent extends AppCompatActivity {
-
     BottomNavigationView bottomNavigationView;
     String uid;
     FirebaseAuth firebaseAuth;

@@ -2,6 +2,7 @@ package com.sehab.campusconnect;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +11,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.sehab.campusconnect.Fragments.CampusFragment;
+import com.sehab.campusconnect.Fragments.DepartmentFragment;
+import com.sehab.campusconnect.Fragments.EventsFragment;
+import com.sehab.campusconnect.Fragments.FacultyFragment;
+import com.sehab.campusconnect.Fragments.HostelFragment;
 
 public class MainActivityFaculty extends AppCompatActivity {
+    BottomNavigationView bottomNavigationView;
     String uid;
     FirebaseAuth firebaseAuth;
     DatabaseReference mBase;
@@ -23,11 +32,47 @@ public class MainActivityFaculty extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_faculty);
+        getSupportActionBar().setTitle("Campus");
 
         firebaseAuth = FirebaseAuth.getInstance();
         uid =firebaseAuth.getUid().toString();
         mBase = FirebaseDatabase.getInstance().getReference("Users").child(uid);
         mBase.keepSynced(true);
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation_faculty);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = new CampusFragment();
+                switch(item.getItemId()) {
+                    case R.id.nav_campus:
+                        selectedFragment = new CampusFragment();
+                        getSupportActionBar().setTitle("Campus");
+                        break;
+
+                    case R.id.nav_department:
+                        selectedFragment = new DepartmentFragment();
+                        getSupportActionBar().setTitle("Department");
+                        break;
+
+                    case R.id.nav_faculties:
+                        selectedFragment = new FacultyFragment();
+                        getSupportActionBar().setTitle("Faculty");
+                        break;
+
+                    case R.id.nav_event:
+                        selectedFragment = new EventsFragment();
+                        getSupportActionBar().setTitle("Event");
+                        break;
+                }
+                getSupportFragmentManager().beginTransaction().replace
+                        (R.id.fragment_container, selectedFragment).commit();
+                return true;
+            }
+        });
+
+        getSupportFragmentManager().beginTransaction().replace
+                (R.id.fragment_container, new CampusFragment()).commit();
     }
 
     @Override

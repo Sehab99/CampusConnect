@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusConnect">
         <activity
+            android:name=".FacultyFragment"
+            android:exported="false" />
+        <activity
             android:name=".AddPostDepartmentActivity"
             android:exported="false" />
         <activity
