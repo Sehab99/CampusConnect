@@ -47,11 +47,20 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"/>
         </LinearLayout>
+        <View
+            android:id="@+id/view"
+            android:layout_below="@+id/linear_layout_event_date_time"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            android:layout_centerHorizontal="true"/>
+
         <TextView
             android:id="@+id/event_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/linear_layout_event_date_time"
+            android:layout_below="@+id/view"
             android:text="kdbv jkvjx kl dlkfv k vknfkvndkjfvn"
             android:textSize="16sp"
             android:textColor="@color/white"/>

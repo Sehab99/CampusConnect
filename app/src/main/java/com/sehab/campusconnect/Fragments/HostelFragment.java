@@ -27,6 +27,7 @@ import com.sehab.campusconnect.adapters.HostelAdapter;
 import com.sehab.campusconnect.models.Hostel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class HostelFragment extends Fragment {
     FloatingActionButton addPost;
@@ -98,14 +99,10 @@ public class HostelFragment extends Fragment {
                     String time = feedSnap.child("time").getValue().toString();
                     String posterUID= feedSnap.child("posterUID").getValue().toString();
                     hostelFeed.add(new Hostel(post, posterUID, posterName, posterDept, date,time));
-//                    int count=0;
-//                    count++;
-
                 }
+                Collections.reverse(hostelFeed);
                 hostelAdapter = new HostelAdapter(getContext(), hostelFeed);
                 contentRecyclerHostel.setAdapter(hostelAdapter);
-
-                //Log.i("Populated List",campusFeed.toString());
             }
 
             @Override

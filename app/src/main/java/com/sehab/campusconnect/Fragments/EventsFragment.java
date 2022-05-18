@@ -29,6 +29,8 @@ import com.sehab.campusconnect.adapters.EventAdapter;
 import com.sehab.campusconnect.models.Event;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class EventsFragment extends Fragment {
     FloatingActionButton addPost;
@@ -83,7 +85,7 @@ public class EventsFragment extends Fragment {
                     eventArrayList.add(new Event(eventName, eventDate, eventTime, eventDesc,
                             posterName, posterDept, date, time, posterUID));
                 }
-
+                Collections.reverse(eventArrayList);
                 eventAdapter = new EventAdapter(getContext(), eventArrayList);
                 recyclerViewEvents.setAdapter(eventAdapter);
                 //Log.i("Populated List",eventArrayList.toString());

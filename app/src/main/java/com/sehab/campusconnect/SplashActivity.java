@@ -26,7 +26,6 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
 
-
         firebaseAuth =FirebaseAuth.getInstance();
 
         uid = firebaseAuth.getUid();

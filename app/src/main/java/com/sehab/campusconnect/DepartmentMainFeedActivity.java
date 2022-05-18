@@ -23,6 +23,7 @@ import com.sehab.campusconnect.adapters.DepartmentAdapter;
 import com.sehab.campusconnect.models.Department;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DepartmentMainFeedActivity extends AppCompatActivity {
     FloatingActionButton addPost;
@@ -78,6 +79,7 @@ public class DepartmentMainFeedActivity extends AppCompatActivity {
                     String posterUID= feedSnap.child("posterUID").getValue().toString();
                     departmentFeed.add(new Department(post, posterName, posterHostel, date, time, posterUID));
                 }
+                Collections.reverse(departmentFeed);
                 departmentAdapter = new DepartmentAdapter(DepartmentMainFeedActivity.this, departmentFeed);
                 contentRecyclerDepartment.setAdapter((departmentAdapter));
             }

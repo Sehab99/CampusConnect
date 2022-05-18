@@ -35,12 +35,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         Event events = eventsArrayList.get(position);
+        String formattedPosterDept = " (" + events.getPosterDept() + ")";
         holder.eventName.setText(events.getEventName());
         holder.eventDate.setText(events.getEventDate());
         holder.eventTime.setText(events.getEventTime());
         holder.eventDesc.setText(events.getEventDesc());
         holder.posterName.setText(events.getPosterName());
-        holder.posterDept.setText(events.getPosterDept());
+        holder.posterDept.setText(formattedPosterDept);
         holder.date.setText(events.getDate());
         holder.time.setText(events.getTime());
     }

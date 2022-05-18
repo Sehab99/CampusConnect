@@ -11,4 +11,6 @@
     <color name="light_grey">#D3D3D3</color>
     <color name="theme">#FFC2A165</color>
     <color name="green">#FF214F1C</color>
+    <color name="grey">#E9EAEE</color>
+    <color name="goodgrey">#535353</color>
 </resources>
