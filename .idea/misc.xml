@@ -36,6 +36,7 @@
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_add_post.xml" value="0.18" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_add_post_campus.xml" value="0.1" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_add_post_department.xml" value="0.153125" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_add_post_faculty.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_add_post_hostel.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_department_main_feed.xml" value="0.1" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_forgot_password.xml" value="0.2" />
@@ -53,6 +54,7 @@
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/fragment_campus.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/fragment_department.xml" value="0.18" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/fragment_events.xml" value="0.153125" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/fragment_faculty.xml" value="0.15135135135135136" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/fragment_hostel.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/menu/bottom_navigation.xml" value="0.15135135135135136" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/menu/bottom_nevigation_faculty.xml" value="0.15135135135135136" />

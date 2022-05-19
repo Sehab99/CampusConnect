@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusConnect">
         <activity
-            android:name=".FacultyFragment"
+            android:name=".AddPostFacultyActivity"
             android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".FacultyFragment"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".AddPostDepartmentActivity"
             android:exported="false" />
@@ -44,7 +47,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" /> <!-- android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar" -->
+            android:exported="false" />
         <activity
             android:name=".MainActivityStudent"
             android:exported="false" />

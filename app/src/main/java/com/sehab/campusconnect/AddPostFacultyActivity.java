@@ -30,7 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class AddPostCampusActivity extends AppCompatActivity {
+public class AddPostFacultyActivity extends AppCompatActivity {
     private ImageButton closeImageButton;
     private Button postContentButton;
     private ImageView profilePic;
@@ -45,7 +45,7 @@ public class AddPostCampusActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_post_campus);
+        setContentView(R.layout.activity_add_post_faculty);
         getSupportActionBar().hide();
 
         postContentButton = findViewById(R.id.post_content);
@@ -57,8 +57,8 @@ public class AddPostCampusActivity extends AppCompatActivity {
         firebaseAuth =FirebaseAuth.getInstance();
         mBase = FirebaseDatabase.getInstance().getReference();
 
-        postScopeTextView.setText("Campus");
-        postLogTextView.setText("Everyone can post here");
+        postScopeTextView.setText("Faculty");
+        postLogTextView.setText("Faculties Space");
         postContentButton.setEnabled(false);
 
         writeContentEditText.addTextChangedListener(new TextWatcher() {
@@ -91,7 +91,7 @@ public class AddPostCampusActivity extends AppCompatActivity {
                         String posterDept = snapshot.child("Department").getValue().toString();
 
                         if(post.isEmpty()) {
-                            Toast.makeText(AddPostCampusActivity.this, "Post is Empty!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddPostFacultyActivity.this, "Post is Empty!", Toast.LENGTH_SHORT).show();
                         } else {
                             Calendar calendar = Calendar.getInstance();
                             SimpleDateFormat sdfDate =new SimpleDateFormat("dd MMM yy");
@@ -121,17 +121,17 @@ public class AddPostCampusActivity extends AppCompatActivity {
             public void onClick(View v) {
                 post = writeContentEditText.getText().toString();
                 if(post.isEmpty()) {
-                    startActivity(new Intent(AddPostCampusActivity.this, MainActivityStudent.class));
+                    startActivity(new Intent(AddPostFacultyActivity.this, MainActivityStudent.class));
                     finish();
                 } else {
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPostCampusActivity.this);
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPostFacultyActivity.this);
                     alertDialog.setTitle("Close post?");
                     alertDialog.setMessage("You have written something, by closing you will lose your post." +
                             "\nAre you sure you want to close?");
                     alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(AddPostCampusActivity.this, MainActivityStudent.class));
+                            startActivity(new Intent(AddPostFacultyActivity.this, MainActivityStudent.class));
                             finish();
                         }
                     });
@@ -148,32 +148,18 @@ public class AddPostCampusActivity extends AppCompatActivity {
     }
 
     private void addPost() {
-//        DatabaseReference postRef =mBase.push();
-//        String postID = postRef.getKey();
-//        mBase.child("Post").child("Campus").child(postID).updateChildren(newPost)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                if(task.isSuccessful()) {
-//                    Toast.makeText(AddPostCampusActivity.this, "Posted", Toast.LENGTH_SHORT).show();
-//                    startActivity(new Intent(AddPostCampusActivity.this, MainActivityStudent.class));
-//                } else {
-//                    Toast.makeText(AddPostCampusActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-        mBase.child("Post").child("Campus").push().updateChildren(newPost)
+        mBase.child("Post").child("Faculty").push().updateChildren(newPost)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()) {
-                    startActivity(new Intent(AddPostCampusActivity.this, MainActivityStudent.class));
-                    finish();
-                    Toast.makeText(AddPostCampusActivity.this, "Posted", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(AddPostCampusActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            startActivity(new Intent(AddPostFacultyActivity.this, MainActivityStudent.class));
+                            finish();
+                            Toast.makeText(AddPostFacultyActivity.this, "Posted", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(AddPostFacultyActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
