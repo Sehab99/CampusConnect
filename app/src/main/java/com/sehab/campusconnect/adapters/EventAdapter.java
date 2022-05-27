@@ -1,9 +1,11 @@
 package com.sehab.campusconnect.adapters;
 
 import android.content.Context;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,10 +16,12 @@ import com.sehab.campusconnect.models.Campus;
 import com.sehab.campusconnect.models.Event;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
     Context context;
     ArrayList<Event> eventsArrayList;
+    TextToSpeech textToSpeech;
 
     public EventAdapter(Context context, ArrayList<Event> eventsArrayList) {
         this.context = context;
@@ -29,6 +33,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.card_event, parent, false);
         EventViewHolder eventViewHolder = new EventViewHolder(view);
+        textToSpeech = new TextToSpeech(context.getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(Locale.UK);
+                }
+            }
+        });
         return eventViewHolder;
     }
 
@@ -44,6 +56,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.posterDept.setText(formattedPosterDept);
         holder.date.setText(events.getDate());
         holder.time.setText(events.getTime());
+        holder.cardEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textToSpeech.speak(events.getEventName() + "on" + events.getEventDate()
+                        + "at" + events.getEventTime() + events.getEventDesc() + "Posted by" + events.getPosterName()
+                        + events.getPosterDept(),TextToSpeech.QUEUE_FLUSH,null);
+            }
+        });
     }
 
     @Override
@@ -60,7 +80,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         TextView posterDept;
         TextView date;
         TextView time;
-
+        RelativeLayout cardEvent;
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
             eventName = itemView.findViewById(R.id.event_name);
@@ -71,6 +91,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             posterDept = itemView.findViewById(R.id.poster_dept);
             date = itemView.findViewById(R.id.date);
             time = itemView.findViewById(R.id.time);
+            cardEvent = itemView.findViewById(R.id.card_event);
         }
     }
 }

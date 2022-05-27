@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.TimeZone;
 
 public class AddEventActivity extends AppCompatActivity {
@@ -40,6 +42,7 @@ public class AddEventActivity extends AppCompatActivity {
     private TextView textViewEventTime;
     private TextView textViewEventDesc;
     private TextInputLayout textInputEventName;
+    private ImageView backFromEvent;
     String eventDate, eventTime;
     int hour, min;
 
@@ -51,7 +54,7 @@ public class AddEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
-        getSupportActionBar().setTitle(" ");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         textInputEventName = findViewById(R.id.text_input_event_name);
         buttonDatePicker = findViewById(R.id.button_date_picker);
@@ -60,6 +63,7 @@ public class AddEventActivity extends AppCompatActivity {
         textViewEventTime = findViewById(R.id.text_view_event_time);
         textViewEventDesc = findViewById(R.id.text_view_event_desc);
         buttonAddEvent = findViewById(R.id.button_add_event);
+        backFromEvent = findViewById(R.id.back_from_event);
 
         newEvent = new HashMap<>();
         firebaseAuth =FirebaseAuth.getInstance();
@@ -121,8 +125,6 @@ public class AddEventActivity extends AppCompatActivity {
                 String eventName = textInputEventName.getEditText().getText().toString();
                 String eventDesc = textViewEventDesc.getText().toString();
                 String posterUID = firebaseAuth.getUid();
-//                Toast.makeText(AddEventActivity.this, eventName + " " + date + " " +
-//                        time + " " + eventDesc, Toast.LENGTH_SHORT).show();
 
                 mBase.child("Users").child(posterUID).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -147,7 +149,6 @@ public class AddEventActivity extends AppCompatActivity {
                             newEvent.put("eventDate", eventDate);
                             newEvent.put("eventTime", eventTime);
                             newEvent.put("posterUID", posterUID);
-
                             addEvent();
                         }
                     }
@@ -157,6 +158,13 @@ public class AddEventActivity extends AppCompatActivity {
 
                     }
                 });
+            }
+        });
+
+        backFromEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

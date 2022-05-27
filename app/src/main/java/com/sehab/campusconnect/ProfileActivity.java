@@ -3,7 +3,12 @@ package com.sehab.campusconnect;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView textViewRegNumber;
     private TextView textViewEmailID;
     private TextView textViewHomeAddress;
+    private ImageView backFromProfile;
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference mBase;
@@ -31,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         getSupportActionBar().hide();
 
+        backFromProfile = findViewById(R.id.back_from_profile);
         textViewProfileName = findViewById(R.id.profile_name);
         textViewBatch = findViewById(R.id.batch);
         textViewDepartmentName = findViewById(R.id.department_name);
@@ -65,5 +72,11 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        backFromProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

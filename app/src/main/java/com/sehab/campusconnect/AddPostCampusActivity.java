@@ -104,7 +104,6 @@ public class AddPostCampusActivity extends AppCompatActivity {
                             newPost.put("posterName", posterName);
                             newPost.put("time", time);
                             newPost.put("posterUID", posterUID);
-
                             addPost();
                         }
                     }
@@ -121,7 +120,6 @@ public class AddPostCampusActivity extends AppCompatActivity {
             public void onClick(View v) {
                 post = writeContentEditText.getText().toString();
                 if(post.isEmpty()) {
-                    startActivity(new Intent(AddPostCampusActivity.this, MainActivityStudent.class));
                     finish();
                 } else {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPostCampusActivity.this);
@@ -131,7 +129,6 @@ public class AddPostCampusActivity extends AppCompatActivity {
                     alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(AddPostCampusActivity.this, MainActivityStudent.class));
                             finish();
                         }
                     });
@@ -148,20 +145,6 @@ public class AddPostCampusActivity extends AppCompatActivity {
     }
 
     private void addPost() {
-//        DatabaseReference postRef =mBase.push();
-//        String postID = postRef.getKey();
-//        mBase.child("Post").child("Campus").child(postID).updateChildren(newPost)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                if(task.isSuccessful()) {
-//                    Toast.makeText(AddPostCampusActivity.this, "Posted", Toast.LENGTH_SHORT).show();
-//                    startActivity(new Intent(AddPostCampusActivity.this, MainActivityStudent.class));
-//                } else {
-//                    Toast.makeText(AddPostCampusActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
         mBase.child("Post").child("Campus").push().updateChildren(newPost)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

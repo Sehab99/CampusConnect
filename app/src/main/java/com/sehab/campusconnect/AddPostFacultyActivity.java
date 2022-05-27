@@ -104,7 +104,6 @@ public class AddPostFacultyActivity extends AppCompatActivity {
                             newPost.put("posterName", posterName);
                             newPost.put("time", time);
                             newPost.put("posterUID", posterUID);
-
                             addPost();
                         }
                     }
@@ -121,7 +120,6 @@ public class AddPostFacultyActivity extends AppCompatActivity {
             public void onClick(View v) {
                 post = writeContentEditText.getText().toString();
                 if(post.isEmpty()) {
-                    startActivity(new Intent(AddPostFacultyActivity.this, MainActivityStudent.class));
                     finish();
                 } else {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPostFacultyActivity.this);
@@ -131,7 +129,6 @@ public class AddPostFacultyActivity extends AppCompatActivity {
                     alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(AddPostFacultyActivity.this, MainActivityStudent.class));
                             finish();
                         }
                     });

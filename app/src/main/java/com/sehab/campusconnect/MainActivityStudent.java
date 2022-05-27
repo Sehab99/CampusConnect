@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -91,14 +90,14 @@ public class MainActivityStudent extends AppCompatActivity {
                 startActivity(new Intent(MainActivityStudent.this, ProfileActivity.class));
                 break;
 
-            case R.id.aboutUs:
+            case R.id.about_us:
                 startActivity(new Intent(MainActivityStudent.this, AboutUsActivity.class));
                 break;
 
-            case R.id.talkMode:
+            case R.id.talk_mode:
                 break;
 
-            case R.id.logOut:
+            case R.id.log_out:
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(MainActivityStudent.this, "Logged Out", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivityStudent.this, LoginActivity.class));

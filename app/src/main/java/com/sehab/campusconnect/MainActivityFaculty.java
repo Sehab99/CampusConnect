@@ -20,7 +20,6 @@ import com.sehab.campusconnect.Fragments.CampusFragment;
 import com.sehab.campusconnect.Fragments.DepartmentFragment;
 import com.sehab.campusconnect.Fragments.EventsFragment;
 import com.sehab.campusconnect.Fragments.FacultyFragment;
-import com.sehab.campusconnect.Fragments.HostelFragment;
 
 public class MainActivityFaculty extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -89,14 +88,14 @@ public class MainActivityFaculty extends AppCompatActivity {
                 startActivity(new Intent(MainActivityFaculty.this, ProfileActivity.class));
                 break;
 
-            case R.id.aboutUs:
+            case R.id.about_us:
                 startActivity(new Intent(MainActivityFaculty.this, AboutUsActivity.class));
                 break;
 
-            case R.id.talkMode:
+            case R.id.talk_mode:
                 break;
 
-            case R.id.logOut:
+            case R.id.log_out:
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(MainActivityFaculty.this, "Logged Out", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivityFaculty.this, LoginActivity.class));

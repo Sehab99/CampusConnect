@@ -121,7 +121,6 @@ public class AddPostDepartmentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 post = writeContentEditText.getText().toString();
                 if(post.isEmpty()) {
-                    startActivity(new Intent(AddPostDepartmentActivity.this, DepartmentMainFeedActivity.class));
                     finish();
                 } else {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPostDepartmentActivity.this);
@@ -131,7 +130,6 @@ public class AddPostDepartmentActivity extends AppCompatActivity {
                     alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(AddPostDepartmentActivity.this, DepartmentMainFeedActivity.class));
                             finish();
                         }
                     });

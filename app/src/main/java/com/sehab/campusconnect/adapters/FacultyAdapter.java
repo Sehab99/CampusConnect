@@ -1,9 +1,11 @@
 package com.sehab.campusconnect.adapters;
 
 import android.content.Context;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,10 +15,12 @@ import com.sehab.campusconnect.R;
 import com.sehab.campusconnect.models.Faculty;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.FacultyViewHolder>{
     Context context;
     ArrayList<Faculty> facultyArrayList;
+    TextToSpeech textToSpeech;
 
     public FacultyAdapter(Context context, ArrayList<Faculty> facultyArrayList) {
         this.context = context;
@@ -28,6 +32,14 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.FacultyV
     public FacultyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.card_post, parent, false);
         FacultyViewHolder viewHolder = new FacultyViewHolder(view);
+        textToSpeech = new TextToSpeech(context.getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(Locale.UK);
+                }
+            }
+        });
         return viewHolder;
     }
 
@@ -39,6 +51,14 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.FacultyV
         holder.deptName.setText(faculty.getPosterDept());
         holder.date.setText(faculty.getDate());
         holder.time.setText(faculty.getTime());
+        holder.cardContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textToSpeech.speak(faculty.getPost() + "        " + "Posted by" +
+                                faculty.getPosterName() + faculty.getPosterDept(),
+                        TextToSpeech.QUEUE_FLUSH,null);
+            }
+        });
     }
 
     @Override
@@ -52,6 +72,7 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.FacultyV
         TextView deptName;
         TextView date;
         TextView time;
+        RelativeLayout cardContent;
         public FacultyViewHolder(@NonNull View itemView) {
             super(itemView);
             profileName = itemView.findViewById(R.id.profile_name);
@@ -59,6 +80,7 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.FacultyV
             deptName = itemView.findViewById(R.id.profile_dept);
             date = itemView.findViewById(R.id.date);
             time = itemView.findViewById(R.id.time);
+            cardContent = itemView.findViewById(R.id.card_content);
         }
     }
 }

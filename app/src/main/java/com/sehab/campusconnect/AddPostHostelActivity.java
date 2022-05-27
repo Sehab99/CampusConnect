@@ -125,7 +125,6 @@ public class AddPostHostelActivity extends AppCompatActivity {
             public void onClick(View v) {
                 post = writeContentEditText.getText().toString();
                 if(post.isEmpty()) {
-                    startActivity(new Intent(AddPostHostelActivity.this, MainActivityStudent.class));
                     finish();
                 } else {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPostHostelActivity.this);
@@ -135,7 +134,6 @@ public class AddPostHostelActivity extends AppCompatActivity {
                     alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(AddPostHostelActivity.this, MainActivityStudent.class));
                             finish();
                         }
                     });
