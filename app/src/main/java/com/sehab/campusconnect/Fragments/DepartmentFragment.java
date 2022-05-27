@@ -86,7 +86,7 @@ public class DepartmentFragment extends Fragment {
                         String TYPE = snapshot.child("Type").getValue().toString();
                         String NAME = snapshot.child("Full Name").getValue().toString();
                         if(TYPE.equals("Student")) {
-                            joinNewGroup();
+                            joinNewGroup(firebaseAuth, mBase, NAME);
                         } else {
                             createNewGroup(firebaseAuth, mBase, NAME);
                         }
@@ -155,7 +155,7 @@ public class DepartmentFragment extends Fragment {
         builder.show();
     }
 
-    private void joinNewGroup() {
+    private void joinNewGroup(FirebaseAuth firebaseAuth, DatabaseReference mBase, String NAME) {
         AlertDialog.Builder builder =  new AlertDialog.Builder(getContext());
         builder.setTitle("Join new group");
         final View LAYOUT = getLayoutInflater().inflate(R.layout.custom_layout_join_group,null);
@@ -165,10 +165,107 @@ public class DepartmentFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 TextInputLayout textInputJoiningLink = LAYOUT.findViewById(R.id.text_input_group_link);
                 String joiningLink = textInputJoiningLink.getEditText().getText().toString();
-                Toast.makeText(getContext(), joiningLink, Toast.LENGTH_SHORT).show();
 
+                mBase.child("Group").child(joiningLink).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()) {
+                            String uID = firebaseAuth.getUid();
+                            HashMap<String, Object> memberTree = new HashMap<>();
+                            memberTree.put("Name", NAME);
+                            HashMap<String, Object> userTree = new HashMap<>();
+
+                            mBase.child("Group").child(joiningLink)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            String groupName = snapshot.child("Group Name").getValue().toString();
+                                            userTree.put("Group Name", groupName);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+
+                            mBase.child("Group").child(joiningLink).child("Members").child(uID)
+                                    .updateChildren(memberTree)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task1) {
+                                            if(task1.isSuccessful()) {
+                                                mBase.child("Users").child(uID).child("Groups Joined").child(joiningLink)
+                                                        .updateChildren(userTree).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task2) {
+                                                                if(task2.isComplete()) {
+                                                                    Toast.makeText(getContext(), "Joined", Toast.LENGTH_SHORT).show();
+                                                                } else {
+                                                                    Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }
+                                                        });
+                                            } else {
+                                                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        } else {
+                            Toast.makeText(getContext(), "Group not found", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+//                String uID = firebaseAuth.getUid();
+//                HashMap<String, Object> memberTree = new HashMap<>();
+//                memberTree.put("Name", NAME);
+//                HashMap<String, Object> userTree = new HashMap<>();
+//
+//                mBase.child("Group").child(joiningLink)
+//                        .addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        String groupName = snapshot.child("Group Name").getValue().toString();
+//                        userTree.put("Group Name", groupName);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//                mBase.child("Group").child(joiningLink).child("Members").child(uID)
+//                        .updateChildren(memberTree)
+//                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task1) {
+//                        if(task1.isSuccessful()) {
+//                            mBase.child("Users").child(uID).child("Groups Joined").child(joiningLink)
+//                                    .updateChildren(userTree).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<Void> task2) {
+//                                            if(task2.isComplete()) {
+//                                                Toast.makeText(getContext(), "Joined", Toast.LENGTH_SHORT).show();
+//                                            } else {
+//                                                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+//                                            }
+//                                        }
+//                                    });
+//                        } else {
+//                            Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
             }
         });
+
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
