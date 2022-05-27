@@ -215,54 +215,10 @@ public class DepartmentFragment extends Fragment {
                             Toast.makeText(getContext(), "Group not found", Toast.LENGTH_SHORT).show();
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
-//                String uID = firebaseAuth.getUid();
-//                HashMap<String, Object> memberTree = new HashMap<>();
-//                memberTree.put("Name", NAME);
-//                HashMap<String, Object> userTree = new HashMap<>();
-//
-//                mBase.child("Group").child(joiningLink)
-//                        .addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        String groupName = snapshot.child("Group Name").getValue().toString();
-//                        userTree.put("Group Name", groupName);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//
-//                mBase.child("Group").child(joiningLink).child("Members").child(uID)
-//                        .updateChildren(memberTree)
-//                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task1) {
-//                        if(task1.isSuccessful()) {
-//                            mBase.child("Users").child(uID).child("Groups Joined").child(joiningLink)
-//                                    .updateChildren(userTree).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                        @Override
-//                                        public void onComplete(@NonNull Task<Void> task2) {
-//                                            if(task2.isComplete()) {
-//                                                Toast.makeText(getContext(), "Joined", Toast.LENGTH_SHORT).show();
-//                                            } else {
-//                                                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
-//                                            }
-//                                        }
-//                                    });
-//                        } else {
-//                            Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
             }
         });
 
@@ -272,7 +228,6 @@ public class DepartmentFragment extends Fragment {
                 dialog.dismiss();
             }
         });
-        //AlertDialog alertDialog = builder.create();
         builder.show();
     }
 }
