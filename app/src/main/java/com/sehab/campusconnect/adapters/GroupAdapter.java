@@ -1,6 +1,7 @@
 package com.sehab.campusconnect.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.sehab.campusconnect.GroupFeedActivity;
 import com.sehab.campusconnect.R;
 import com.sehab.campusconnect.models.Group;
 
@@ -34,13 +36,15 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
 
     @Override
     public void onBindViewHolder(@NonNull GroupViewHolder holder, int position) {
-        Group group =groupArrayList.get(position);
+        Group group = groupArrayList.get(position);
         holder.creatorName.setText(group.getCreatorName());
         holder.groupName.setText(group.getGroupName());
         holder.groupView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Going to the group page
+                Intent intent = new Intent(context, GroupFeedActivity.class);
+                intent.putExtra("groupKey", group.getGroupKey());
+                context.startActivity(intent);
             }
         });
     }
