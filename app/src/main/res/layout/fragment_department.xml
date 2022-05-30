@@ -27,8 +27,16 @@
                 android:layout_marginTop="30dp"
                 android:text="Department Name"
                 android:textSize="22sp" />
-
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/empty_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Create or Join new group"
+            android:textSize="30sp"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/content_recycler_department"

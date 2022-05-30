@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,7 +24,7 @@ import com.sehab.campusconnect.models.Department;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class DepartmentMainFeedActivity extends AppCompatActivity {
+public class DepartmentFeedActivity extends AppCompatActivity {
     FloatingActionButton addPost;
 
     TextView emptyFeed;
@@ -39,13 +38,13 @@ public class DepartmentMainFeedActivity extends AppCompatActivity {
 
     String department;
 
-    public DepartmentMainFeedActivity() {
+    public DepartmentFeedActivity() {
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_department_main_feed);
+        setContentView(R.layout.activity_department_feed);
         department = getIntent().getStringExtra("Department Name");
         getSupportActionBar().setTitle(department);
 
@@ -53,7 +52,7 @@ public class DepartmentMainFeedActivity extends AppCompatActivity {
         emptyFeed = findViewById(R.id.empty_feed);
         contentRecyclerDepartment = findViewById(R.id.content_recycler_department_main);
         contentRecyclerDepartment.setHasFixedSize(true);
-        contentRecyclerDepartment.setLayoutManager(new LinearLayoutManager(DepartmentMainFeedActivity.this));
+        contentRecyclerDepartment.setLayoutManager(new LinearLayoutManager(DepartmentFeedActivity.this));
         contentRecyclerDepartment.setItemAnimator(new DefaultItemAnimator());
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -80,7 +79,7 @@ public class DepartmentMainFeedActivity extends AppCompatActivity {
                     departmentFeed.add(new Department(post, posterName, posterHostel, date, time, posterUID));
                 }
                 Collections.reverse(departmentFeed);
-                departmentAdapter = new DepartmentAdapter(DepartmentMainFeedActivity.this, departmentFeed);
+                departmentAdapter = new DepartmentAdapter(DepartmentFeedActivity.this, departmentFeed);
                 contentRecyclerDepartment.setAdapter((departmentAdapter));
             }
 
@@ -93,7 +92,7 @@ public class DepartmentMainFeedActivity extends AppCompatActivity {
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DepartmentMainFeedActivity.this,
+                startActivity(new Intent(DepartmentFeedActivity.this,
                         AddPostDepartmentActivity.class));
                 finish();
             }

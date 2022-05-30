@@ -15,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,9 +29,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.sehab.campusconnect.DepartmentMainFeedActivity;
+import com.sehab.campusconnect.DepartmentFeedActivity;
 import com.sehab.campusconnect.R;
+import com.sehab.campusconnect.adapters.GroupAdapter;
+import com.sehab.campusconnect.models.Group;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -40,6 +46,10 @@ public class DepartmentFragment extends Fragment {
     private RelativeLayout departmentMain;
     private TextView departmentName;
     private String DEPARTMENT;
+    private RecyclerView contentRecycler;
+    ArrayList<Group> groupList;
+    GroupAdapter groupAdapter;
+    int count = 0;
 
     @Nullable
     @Override
@@ -50,8 +60,13 @@ public class DepartmentFragment extends Fragment {
         departmentMain = view.findViewById(R.id.department_main);
         emptyFeed = view.findViewById(R.id.empty_feed);
         departmentName = view.findViewById(R.id.department_name);
+        contentRecycler = view.findViewById(R.id.content_recycler_department);
         firebaseAuth = FirebaseAuth.getInstance();
         mBase = FirebaseDatabase.getInstance().getReference();
+
+        contentRecycler.setHasFixedSize(true);
+        contentRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        contentRecycler.setItemAnimator(new DefaultItemAnimator());
 
         mBase.child("Users").child(Objects.requireNonNull(firebaseAuth.getUid())).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -70,7 +85,7 @@ public class DepartmentFragment extends Fragment {
         departmentMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), DepartmentMainFeedActivity.class)
+                startActivity(new Intent(getContext(), DepartmentFeedActivity.class)
                         .putExtra("Department Name", DEPARTMENT));
             }
         });
@@ -126,7 +141,7 @@ public class DepartmentFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task1) {
                         if(task1.isSuccessful()) {
-                            mBase.child("Users").child(uID).child("Groups Created").child(groupID)
+                            mBase.child("Users").child(uID).child("Groups").child(groupID)
                                     .updateChildren(userTree)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -195,7 +210,7 @@ public class DepartmentFragment extends Fragment {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task1) {
                                             if(task1.isSuccessful()) {
-                                                mBase.child("Users").child(uID).child("Groups Joined").child(joiningLink)
+                                                mBase.child("Users").child(uID).child("Groups").child(joiningLink)
                                                         .updateChildren(userTree).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                             @Override
                                                             public void onComplete(@NonNull Task<Void> task2) {
@@ -229,5 +244,49 @@ public class DepartmentFragment extends Fragment {
             }
         });
         builder.show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBase.child("Users").child(Objects.requireNonNull(firebaseAuth.getUid())).child("Groups")
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                groupList = new ArrayList<>();
+                if (snapshot.getChildrenCount() <= 0) {
+                    emptyFeed.setVisibility(View.VISIBLE);
+                } else {
+                    emptyFeed.setVisibility(View.GONE);
+                }
+                DatabaseReference groupReference = FirebaseDatabase.getInstance().getReference("Group");
+                for(DataSnapshot groupSnap : snapshot.getChildren()) {
+                    String groupKey = groupSnap.getKey();
+                    groupReference.child(groupKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            String groupName = dataSnapshot.child("Group Name").getValue().toString();
+                            String creatorName = dataSnapshot.child("Creator Name").getValue().toString();
+                            groupList.add(new Group(groupKey, groupName, creatorName));
+                            count++;
+                            if(count >= snapshot.getChildrenCount()) {
+                                groupAdapter = new GroupAdapter(getContext(), groupList);
+                                contentRecycler.setAdapter(groupAdapter);
+                                groupAdapter.notifyDataSetChanged();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 }
