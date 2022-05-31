@@ -26,9 +26,7 @@ import java.util.Collections;
 
 public class DepartmentFeedActivity extends AppCompatActivity {
     FloatingActionButton addPost;
-
     TextView emptyFeed;
-
     FirebaseAuth firebaseAuth;
     DatabaseReference mBase;
 

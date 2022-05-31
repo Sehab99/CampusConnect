@@ -6,17 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".GroupFeedActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="5dp">
+        <TextView
+            android:id="@+id/text_view_group_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Group Key"
+            android:textSize="25sp"
+            android:paddingTop="5dp"/>
+        <Button
+            android:id="@+id/button_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Copy"/>
+    </RelativeLayout>
     <TextView
-        android:id="@+id/text_view_group_key"
+        android:id="@+id/empty_feed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Group Key"
-        android:textSize="30sp"/>
-    <Button
-        android:id="@+id/button_copy"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
+        android:text="Empty Feed"
+        android:textSize="20dp"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/content_recycler_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="Copy"/>
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/theme"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_post"
+        app:borderWidth="0dp"
+        app:elevation="10dp"
+        android:focusable="true" />
 
 </FrameLayout>
