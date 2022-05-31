@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPostDepartmentActivity">
+    tools:context=".AddPostGroupActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +37,6 @@
                 android:layout_margin="5dp"
                 android:text="Post"
                 app:cornerRadius="25dp"/>
-
         </RelativeLayout>
 
         <LinearLayout
@@ -60,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginRight="10dp"
-                android:hint="Department"
+                android:hint="Group"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
         </LinearLayout>
@@ -75,8 +74,6 @@
             android:gravity="start"
             android:padding="10dp"
             android:textColorHint="@color/grey_post" />
-
-
     </LinearLayout>
 
     <TextView
@@ -86,7 +83,7 @@
         android:textSize="20sp"
         android:layout_alignParentBottom="true"
         android:background="@null"
-        android:hint="Department Fragment"
+        android:hint="Groups Post"
         android:paddingLeft="20dp"
         android:padding="5dp"/>
 </RelativeLayout>
