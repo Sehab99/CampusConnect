@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import com.sehab.campusconnect.models.Department;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class DepartmentFeedActivity extends AppCompatActivity {
     FloatingActionButton addPost;
@@ -44,7 +46,7 @@ public class DepartmentFeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_department_feed);
         department = getIntent().getStringExtra("Department Name");
-        getSupportActionBar().setTitle(department);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(department);
 
         addPost = findViewById(R.id.add_post);
         emptyFeed = findViewById(R.id.empty_feed);
@@ -54,6 +56,7 @@ public class DepartmentFeedActivity extends AppCompatActivity {
         contentRecyclerDepartment.setItemAnimator(new DefaultItemAnimator());
 
         firebaseAuth = FirebaseAuth.getInstance();
+//        Log.i("DEPARTMENT_LOG",department);
         mBase = FirebaseDatabase.getInstance().getReference("Post").child("Department").child(department);
         mBase.keepSynced(true);
 
@@ -92,7 +95,6 @@ public class DepartmentFeedActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(DepartmentFeedActivity.this,
                         AddPostDepartmentActivity.class));
-                finish();
             }
         });
     }

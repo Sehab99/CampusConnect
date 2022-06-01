@@ -121,6 +121,8 @@ public class AddPostDepartmentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 post = writeContentEditText.getText().toString();
                 if(post.isEmpty()) {
+//                    startActivity(new Intent(AddPostDepartmentActivity.this, DepartmentFeedActivity.class));
+                    onBackPressed();
                     finish();
                 } else {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPostDepartmentActivity.this);
@@ -152,7 +154,7 @@ public class AddPostDepartmentActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()) {
-                            startActivity(new Intent(AddPostDepartmentActivity.this, DepartmentFeedActivity.class));
+//                            startActivity(new Intent(AddPostDepartmentActivity.this, DepartmentFeedActivity.class));
                             finish();
                             Toast.makeText(AddPostDepartmentActivity.this, "Posted", Toast.LENGTH_SHORT).show();
                         } else {

@@ -61,7 +61,7 @@ public class CampusFragment extends Fragment {
         contentRecyclerCampus.setLayoutManager(new LinearLayoutManager(getContext()));
         contentRecyclerCampus.setItemAnimator(new DefaultItemAnimator());
 
-        mBase.addListenerForSingleValueEvent(new ValueEventListener() {
+        mBase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 campusFeed = new ArrayList<>();

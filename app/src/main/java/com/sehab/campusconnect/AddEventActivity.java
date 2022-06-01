@@ -7,6 +7,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sehab.campusconnect.Fragments.EventsFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -42,7 +44,7 @@ public class AddEventActivity extends AppCompatActivity {
     private TextView textViewEventTime;
     private TextView textViewEventDesc;
     private TextInputLayout textInputEventName;
-    private ImageView backFromEvent;
+//    private ImageView backFromEvent;
     String eventDate, eventTime;
     int hour, min;
 
@@ -54,7 +56,8 @@ public class AddEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         textInputEventName = findViewById(R.id.text_input_event_name);
         buttonDatePicker = findViewById(R.id.button_date_picker);
@@ -63,7 +66,7 @@ public class AddEventActivity extends AppCompatActivity {
         textViewEventTime = findViewById(R.id.text_view_event_time);
         textViewEventDesc = findViewById(R.id.text_view_event_desc);
         buttonAddEvent = findViewById(R.id.button_add_event);
-        backFromEvent = findViewById(R.id.back_from_event);
+//        backFromEvent = findViewById(R.id.back_from_event);
 
         newEvent = new HashMap<>();
         firebaseAuth =FirebaseAuth.getInstance();
@@ -155,18 +158,15 @@ public class AddEventActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
             }
         });
+    }
 
-        backFromEvent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void addEvent() {
@@ -175,13 +175,23 @@ public class AddEventActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()) {
+//                    startActivity(new Intent(AddEventActivity.this, MainActivityStudent.class));
                     Toast.makeText(AddEventActivity.this, "Event Added", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(AddEventActivity.this, MainActivityStudent.class));
                     finish();
                 } else {
                     Toast.makeText(AddEventActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId()==android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 }

@@ -32,11 +32,12 @@ import java.util.Collections;
 public class GroupFeedActivity extends AppCompatActivity {
     TextView textViewGroupKey;
     Button buttonCopy;
-    String groupKey;
     FloatingActionButton addPost;
     TextView emptyFeed;
     FirebaseAuth firebaseAuth;
     DatabaseReference mBase;
+
+    String groupKey, groupName;
 
     DepartmentAdapter groupAdapter;
     ArrayList<Department> groupFeed;
@@ -48,8 +49,11 @@ public class GroupFeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_group_feed);
 
         groupKey = getIntent().getExtras().getString("groupKey");
+        groupName = getIntent().getExtras().getString("groupName");
         textViewGroupKey = findViewById(R.id.text_view_group_key);
         buttonCopy = findViewById(R.id.button_copy);
+
+        getSupportActionBar().setTitle(groupName);
 
         addPost = findViewById(R.id.add_post);
         emptyFeed = findViewById(R.id.empty_feed);
@@ -108,7 +112,7 @@ public class GroupFeedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(GroupFeedActivity.this,
-                        AddPostGroupActivity.class).putExtra("Group Key", groupKey));
+                        AddPostGroupActivity.class).putExtra("Group Name", groupName));
                 finish();
             }
         });

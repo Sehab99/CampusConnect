@@ -61,7 +61,7 @@ public class EventsFragment extends Fragment {
         recyclerViewEvents.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewEvents.setItemAnimator(new DefaultItemAnimator());
 
-        mBase.addListenerForSingleValueEvent(new ValueEventListener() {
+        mBase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 eventArrayList = new ArrayList<>();

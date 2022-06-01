@@ -1,13 +1,14 @@
 package com.sehab.campusconnect;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileActivity extends AppCompatActivity {
     private TextView textViewProfileName;
     private TextView textViewBatch;
@@ -27,9 +30,13 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView textViewEmailID;
     private TextView textViewHomeAddress;
     private ImageView backFromProfile;
+    private CircleImageView profilePicture;
+    private ImageButton chooseImage;
+    private static final int PICK_IMAGE_REQUEST = 1;
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference mBase;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +52,8 @@ public class ProfileActivity extends AppCompatActivity {
         textViewRegNumber = findViewById(R.id.reg_number);
         textViewEmailID = findViewById(R.id.email_id);
         textViewHomeAddress = findViewById(R.id.home_address);
+        profilePicture = findViewById(R.id.profile_pic);
+        chooseImage = findViewById(R.id.choose_image);
 
         firebaseAuth = FirebaseAuth.getInstance();
         mBase = FirebaseDatabase.getInstance().getReference("Users").child(firebaseAuth.getUid());
@@ -78,5 +87,25 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        chooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, PICK_IMAGE_REQUEST);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null &&
+                data.getData() != null) {
+            uri = data.getData();
+            profilePicture.setImageURI(uri);
+        }
     }
 }

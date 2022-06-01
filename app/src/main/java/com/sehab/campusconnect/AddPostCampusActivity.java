@@ -150,7 +150,7 @@ public class AddPostCampusActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()) {
-                    startActivity(new Intent(AddPostCampusActivity.this, MainActivityStudent.class));
+//                    startActivity(new Intent(AddPostCampusActivity.this, MainActivityStudent.class));
                     finish();
                     Toast.makeText(AddPostCampusActivity.this, "Posted", Toast.LENGTH_SHORT).show();
                 } else {
