@@ -49,7 +49,7 @@ public class AddPostGroupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_post_group);
         getSupportActionBar().hide();
-        groupKey = getIntent().getStringExtra("Group Name");
+        groupKey = getIntent().getStringExtra("Group Key");
 
         postContentButton = findViewById(R.id.post_content);
         textViewPostScope = findViewById(R.id.post_scope);

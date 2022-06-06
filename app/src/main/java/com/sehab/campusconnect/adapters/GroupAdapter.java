@@ -43,8 +43,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, GroupFeedActivity.class);
-                intent.putExtra("groupKey", group.getGroupKey());
-                intent.putExtra("groupName", group.getGroupName());
+                intent.putExtra("Group Key", group.getGroupKey());
+                intent.putExtra("Group Name", group.getGroupName());
                 context.startActivity(intent);
             }
         });

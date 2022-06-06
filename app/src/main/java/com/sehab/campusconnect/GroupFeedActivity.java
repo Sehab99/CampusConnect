@@ -48,8 +48,8 @@ public class GroupFeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_feed);
 
-        groupKey = getIntent().getExtras().getString("groupKey");
-        groupName = getIntent().getExtras().getString("groupName");
+        groupKey = getIntent().getExtras().getString("Group Key");
+        groupName = getIntent().getExtras().getString("Group Name");
         textViewGroupKey = findViewById(R.id.text_view_group_key);
         buttonCopy = findViewById(R.id.button_copy);
 
@@ -112,7 +112,7 @@ public class GroupFeedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(GroupFeedActivity.this,
-                        AddPostGroupActivity.class).putExtra("Group Name", groupName));
+                        AddPostGroupActivity.class).putExtra("Group Key", groupKey));
                 finish();
             }
         });
