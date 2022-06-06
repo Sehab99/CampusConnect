@@ -6,15 +6,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -42,7 +37,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivityStudent extends AppCompatActivity {
     private TextView textViewProfileName;
     private TextView textViewBatch;
     private TextView textViewDepartmentName;
@@ -66,7 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile_student);
         getSupportActionBar().hide();
 
         backFromProfile = findViewById(R.id.back_from_profile);
@@ -91,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
                 CropImage.ActivityResult cropResult = CropImage.getActivityResult(result.getData());
                 if (result.getResultCode() == RESULT_OK) {
                     Uri resultUri = cropResult.getUri();
-                    Picasso.with(ProfileActivity.this).load(resultUri).into(profilePicture);
+                    Picasso.with(ProfileActivityStudent.this).load(resultUri).into(profilePicture);
 
                 }
             }
@@ -115,7 +110,7 @@ public class ProfileActivity extends AppCompatActivity {
                 textViewDepartmentName.setText(departmentName);
                 textViewHostelName.setText(hostelName);
                 if (!url.equals(""))
-                Picasso.with(ProfileActivity.this).load(url).into(profilePicture);
+                Picasso.with(ProfileActivityStudent.this).load(url).into(profilePicture);
                 textViewRegNumber.setText(regNumber);
                 textViewEmailID.setText(emailID);
                 textViewHomeAddress.setText(homeAddress);
@@ -167,7 +162,7 @@ public class ProfileActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 String url = task.getResult().toString();
                                 dialog.dismiss();
-                                Picasso.with(ProfileActivity.this).load(imageuri).into(profilePicture);
+                                Picasso.with(ProfileActivityStudent.this).load(imageuri).into(profilePicture);
                                 mBase.child("URL").setValue(url);
                             }
                         }

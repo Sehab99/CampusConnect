@@ -85,7 +85,7 @@ public class MainActivityFaculty extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.profile:
-                startActivity(new Intent(MainActivityFaculty.this, ProfileActivity.class));
+                startActivity(new Intent(MainActivityFaculty.this, ProfileActivityFaculty.class));
                 break;
 
             case R.id.about_us:
