@@ -85,8 +85,6 @@ public class CampusFragment extends Fragment {
                 Collections.reverse(campusFeed);
                 campusAdapter = new CampusAdapter(getContext(),campusFeed);
                 contentRecyclerCampus.setAdapter(campusAdapter);
-
-                //Log.i("Populated List",campusFeed.toString());
             }
 
             @Override

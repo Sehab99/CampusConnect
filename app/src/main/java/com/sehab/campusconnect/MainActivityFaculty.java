@@ -92,9 +92,6 @@ public class MainActivityFaculty extends AppCompatActivity {
                 startActivity(new Intent(MainActivityFaculty.this, AboutUsActivity.class));
                 break;
 
-            case R.id.talk_mode:
-                break;
-
             case R.id.log_out:
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(MainActivityFaculty.this, "Logged Out", Toast.LENGTH_SHORT).show();

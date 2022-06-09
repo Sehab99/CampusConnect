@@ -21,6 +21,7 @@
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_email_24dp.xml" value="0.129" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_event.xml" value="0.1295" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_faculties.xml" value="0.142" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_group_members.xml" value="0.1635" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_hostel.xml" value="0.142" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_icons8_camera_40.xml" value="0.1635" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/drawable/ic_icons8_checked_identification_documents_50.xml" value="0.142" />
@@ -46,6 +47,7 @@
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_department_main_feed.xml" value="0.15" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_forgot_password.xml" value="0.2" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_group_feed.xml" value="0.1" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_group_member_list.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_login.xml" value="0.21" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_main_faculty.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/activity_main_student.xml" value="0.1" />
@@ -58,6 +60,7 @@
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/card_department_group.xml" value="0.25" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/card_department_main.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/card_event.xml" value="0.22" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/card_members_list.xml" value="0.25" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/card_post.xml" value="0.18" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/custom_layout_alert_dialog.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/custom_layout_create_group.xml" value="0.15234375" />
@@ -68,6 +71,7 @@
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/layout/fragment_hostel.xml" value="0.153125" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/menu/bottom_navigation.xml" value="0.15135135135135136" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/menu/bottom_nevigation_faculty.xml" value="0.15135135135135136" />
+        <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/menu/member_list_menu.xml" value="0.15234375" />
         <entry key="..\:/Users/SEHAB-PC/AndroidStudioProjects/CampusConnect/app/src/main/res/menu/three_dot_menu.xml" value="0.153125" />
       </map>
     </option>

@@ -94,9 +94,6 @@ public class MainActivityStudent extends AppCompatActivity {
                 startActivity(new Intent(MainActivityStudent.this, AboutUsActivity.class));
                 break;
 
-            case R.id.talk_mode:
-                break;
-
             case R.id.log_out:
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(MainActivityStudent.this, "Logged Out", Toast.LENGTH_SHORT).show();
@@ -106,4 +103,6 @@ public class MainActivityStudent extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

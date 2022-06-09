@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="12dp"
+    android:paddingHorizontal="10dp">
+    <TextView
+        android:id="@+id/member_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Member Name"
+        android:textSize="15dp"
+        android:textColor="@color/black" />
+
+    <View
+        android:layout_below="@+id/member_name"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:backgroundTint="@color/grey"
+        android:background="@color/grey" />
+</RelativeLayout>

@@ -11,6 +11,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -116,5 +118,22 @@ public class GroupFeedActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.member_list_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.member_list:
+                startActivity(new Intent(GroupFeedActivity.this, Group_Member_List_Activity.class)
+                        .putExtra("Group Link", groupKey));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
