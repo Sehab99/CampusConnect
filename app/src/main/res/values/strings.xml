@@ -61,4 +61,8 @@
 
     <string name="event_date">00 MMM 0000</string>
     <string name="event_time">00:00 am</string>
+    <string name="about_us">This app is made and submitted in partial fulfillment of the requirement for the award of the degree of Master of Computer Application under the guidance of Dr. K.S. Kuppusamy, Department of Computer Science, School of Engineering and technology, Pondicherry University, June 2022</string>
+    <string name="email">sehabatmain@gmail.com</string>
+    <string name="linked_in"><a href="https://www.linkedin.com/in/sk-sehabuddin/">linkedIn</a></string>
+    <string name="youtube"><a href="https://www.youtube.com/channel/UC8RNx_Z-wzlO57AngOY0_pA">YouTube</a></string>
 </resources>
