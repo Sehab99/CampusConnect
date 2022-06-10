@@ -34,8 +34,6 @@ public class AddPostCampusActivity extends AppCompatActivity {
     private ImageButton closeImageButton;
     private Button postContentButton;
     private ImageView profilePic;
-    private TextView postScopeTextView;
-    private TextView postLogTextView;
     private EditText writeContentEditText;
     HashMap<String, Object> newPost;
     FirebaseAuth firebaseAuth;
@@ -49,15 +47,12 @@ public class AddPostCampusActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         postContentButton = findViewById(R.id.post_content);
-        postScopeTextView = findViewById(R.id.post_scope);
-        postLogTextView = findViewById(R.id.post_log);
         closeImageButton = findViewById(R.id.close_image_button);
         writeContentEditText = findViewById(R.id.write_content);
         newPost = new HashMap<>();
         firebaseAuth =FirebaseAuth.getInstance();
         mBase = FirebaseDatabase.getInstance().getReference();
 
-        postScopeTextView.setText("Campus");
         postContentButton.setEnabled(false);
 
         writeContentEditText.addTextChangedListener(new TextWatcher() {

@@ -49,6 +49,7 @@ public class GroupFeedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_feed);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         groupKey = getIntent().getExtras().getString("Group Key");
         groupName = getIntent().getExtras().getString("Group Name");
@@ -114,7 +115,8 @@ public class GroupFeedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(GroupFeedActivity.this,
-                        AddPostGroupActivity.class).putExtra("Group Key", groupKey));
+                        AddPostGroupActivity.class).putExtra("Group Key", groupKey)
+                        .putExtra("Group Name",groupName));
             }
         });
     }
@@ -132,7 +134,15 @@ public class GroupFeedActivity extends AppCompatActivity {
                 startActivity(new Intent(GroupFeedActivity.this, Group_Member_List_Activity.class)
                         .putExtra("Group Link", groupKey));
                 break;
+            case android.R.id.home:
+                onBackPressed();
+                break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

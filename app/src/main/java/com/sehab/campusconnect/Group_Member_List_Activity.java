@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -33,6 +34,7 @@ public class Group_Member_List_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_member_list);
         getSupportActionBar().setTitle("Group Members");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         groupLink = getIntent().getStringExtra("Group Link");
         emptyGroup = findViewById(R.id.empty_group);
@@ -65,5 +67,18 @@ public class Group_Member_List_Activity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

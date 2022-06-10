@@ -36,13 +36,12 @@ public class AddPostGroupActivity extends AppCompatActivity {
     private Button postContentButton;
     private ImageView profilePic;
     private TextView textViewPostScope;
-    private TextView textViewPostLog;
     private EditText writeContentEditText;
     HashMap<String, Object> newPost;
     FirebaseAuth firebaseAuth;
     DatabaseReference mBase;
     String post;
-    String groupKey;
+    String groupKey, groupName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +49,10 @@ public class AddPostGroupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_post_group);
         getSupportActionBar().hide();
         groupKey = getIntent().getStringExtra("Group Key");
+        groupName = getIntent().getStringExtra("Group Name");
 
         postContentButton = findViewById(R.id.post_content);
         textViewPostScope = findViewById(R.id.post_scope);
-        textViewPostLog = findViewById(R.id.post_log);
         closeImageButton = findViewById(R.id.close_image_button);
         writeContentEditText = findViewById(R.id.write_content);
         newPost = new HashMap<>();
@@ -61,7 +60,7 @@ public class AddPostGroupActivity extends AppCompatActivity {
         mBase = FirebaseDatabase.getInstance().getReference();
 
         postContentButton.setEnabled(false);
-        textViewPostScope.setText(groupKey);
+        textViewPostScope.setText(groupName);
 
         writeContentEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -153,7 +152,7 @@ public class AddPostGroupActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()) {
-                            startActivity(new Intent(AddPostGroupActivity.this, DepartmentFeedActivity.class));
+//                            startActivity(new Intent(AddPostGroupActivity.this, DepartmentFeedActivity.class));
                             finish();
                             Toast.makeText(AddPostGroupActivity.this, "Posted", Toast.LENGTH_SHORT).show();
                         } else {

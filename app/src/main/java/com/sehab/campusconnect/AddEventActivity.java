@@ -56,7 +56,6 @@ public class AddEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
         getSupportActionBar().setTitle("Create Event");
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         textInputEventName = findViewById(R.id.text_input_event_name);
@@ -66,7 +65,6 @@ public class AddEventActivity extends AppCompatActivity {
         textViewEventTime = findViewById(R.id.text_view_event_time);
         textViewEventDesc = findViewById(R.id.text_view_event_desc);
         buttonAddEvent = findViewById(R.id.button_add_event);
-//        backFromEvent = findViewById(R.id.back_from_event);
 
         newEvent = new HashMap<>();
         firebaseAuth =FirebaseAuth.getInstance();
@@ -164,11 +162,6 @@ public class AddEventActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
     private void addEvent() {
         mBase.child("Post").child("Event").push().updateChildren(newEvent)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -186,12 +179,15 @@ public class AddEventActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId()==android.R.id.home) {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
-
     }
 }
