@@ -39,7 +39,6 @@ public class AddPostHostelActivity extends AppCompatActivity {
     private Button postContentButton;
     private ImageView profilePic;
     private TextView postScopeTextView;
-    private TextView postLogTextView;
     private EditText writeContentEditText;
     HashMap<String, Object> newPost;
     FirebaseAuth firebaseAuth;
@@ -54,7 +53,6 @@ public class AddPostHostelActivity extends AppCompatActivity {
         hostelName = ""; //yet to complete
         postContentButton = findViewById(R.id.post_content);
         postScopeTextView = findViewById(R.id.post_scope);
-        postLogTextView = findViewById(R.id.post_log);
         closeImageButton = findViewById(R.id.close_image_button);
         writeContentEditText = findViewById(R.id.write_content);
         newPost = new HashMap<>();
@@ -62,7 +60,6 @@ public class AddPostHostelActivity extends AppCompatActivity {
         mBase = FirebaseDatabase.getInstance().getReference();
 
         postScopeTextView.setText("Hostel");
-        postLogTextView.setText(hostelName + "hostler can post here");
         postContentButton.setEnabled(false);
 
         writeContentEditText.addTextChangedListener(new TextWatcher() {

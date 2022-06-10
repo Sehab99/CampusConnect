@@ -23,9 +23,12 @@
                 android:id="@+id/close_image_button"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="5dp"
                 android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/white"
                 android:src="@drawable/ic_close" />
 
@@ -86,7 +89,7 @@
         android:textSize="20sp"
         android:layout_alignParentBottom="true"
         android:background="@null"
-        android:hint="Department Fragment"
-        android:paddingLeft="20dp"
+        android:hint="Common Department space"
+        android:layout_marginHorizontal="20dp"
         android:padding="5dp"/>
 </RelativeLayout>

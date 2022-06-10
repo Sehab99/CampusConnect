@@ -44,7 +44,6 @@ public class AddEventActivity extends AppCompatActivity {
     private TextView textViewEventTime;
     private TextView textViewEventDesc;
     private TextInputLayout textInputEventName;
-//    private ImageView backFromEvent;
     String eventDate, eventTime;
     int hour, min;
 
@@ -56,6 +55,7 @@ public class AddEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
+        getSupportActionBar().setTitle("Create Event");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

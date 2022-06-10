@@ -88,8 +88,8 @@
         android:textSize="20sp"
         android:layout_alignParentBottom="true"
         android:background="@null"
-        android:hint="Post Log"
-        android:paddingLeft="20dp"
+        android:hint="Hostel space"
+        android:layout_marginHorizontal="20dp"
         android:padding="5dp"/>
 
 </RelativeLayout>

@@ -83,7 +83,7 @@
         android:textSize="20sp"
         android:layout_alignParentBottom="true"
         android:background="@null"
-        android:hint="Groups Post"
-        android:paddingLeft="20dp"
+        android:hint="Private Group space"
+        android:layout_marginHorizontal="20dp"
         android:padding="5dp"/>
 </RelativeLayout>

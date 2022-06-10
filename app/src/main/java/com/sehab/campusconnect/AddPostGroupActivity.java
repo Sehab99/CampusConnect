@@ -122,6 +122,7 @@ public class AddPostGroupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 post = writeContentEditText.getText().toString();
                 if(post.isEmpty()) {
+                    onBackPressed();
                     finish();
                 } else {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(AddPostGroupActivity.this);

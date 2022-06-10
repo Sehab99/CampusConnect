@@ -121,7 +121,6 @@ public class AddPostDepartmentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 post = writeContentEditText.getText().toString();
                 if(post.isEmpty()) {
-//                    startActivity(new Intent(AddPostDepartmentActivity.this, DepartmentFeedActivity.class));
                     onBackPressed();
                     finish();
                 } else {

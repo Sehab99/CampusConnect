@@ -115,7 +115,6 @@ public class GroupFeedActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(GroupFeedActivity.this,
                         AddPostGroupActivity.class).putExtra("Group Key", groupKey));
-                finish();
             }
         });
     }

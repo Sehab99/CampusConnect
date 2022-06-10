@@ -58,7 +58,6 @@ public class AddPostCampusActivity extends AppCompatActivity {
         mBase = FirebaseDatabase.getInstance().getReference();
 
         postScopeTextView.setText("Campus");
-        postLogTextView.setText("Everyone can post here");
         postContentButton.setEnabled(false);
 
         writeContentEditText.addTextChangedListener(new TextWatcher() {
