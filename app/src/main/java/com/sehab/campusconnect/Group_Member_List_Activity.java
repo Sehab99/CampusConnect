@@ -46,7 +46,7 @@ public class Group_Member_List_Activity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Group").child(groupLink).child("Members");
         members = new ArrayList<>();
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.getChildrenCount() <= 0) {
